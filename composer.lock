@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a6fba0d69aa088eebf396fa502690566",
+    "packages": [
+        {
+            "name": "sprnva/framework",
+            "version": "v1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sprnva/framework.git",
+                "reference": "16328b2f027f607b8fdd7541e840c385879b9773"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sprnva/framework/zipball/16328b2f027f607b8fdd7541e840c385879b9773",
+                "reference": "16328b2f027f607b8fdd7541e840c385879b9773",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Helpers.php",
+                    "src/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Judywen Guapin",
+                    "email": "jguapin21@gmail.com"
+                }
+            ],
+            "description": "The Sprnva Framework.",
+            "keywords": [
+                "framework",
+                "sprnva"
+            ],
+            "support": {
+                "issues": "https://github.com/sprnva/framework/issues",
+                "source": "https://github.com/sprnva/framework/tree/v1.3.7"
+            },
+            "time": "2021-07-21T05:20:38+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}
