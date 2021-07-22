@@ -29,7 +29,7 @@ If `sprnva/fortify` is not present in your composer.json, maybe your application
     - check if `app/views/layouts/profile.php` is present.
         - if not present:
             - create a file `app/views/layouts/profile.php`
-            - then copy all the content of this file: https://github.com/sprnva/sprnva/blob/master/app/views/layouts/profile.php
+            - then copy all the content of this file: [app/views/layouts/profile.php](https://github.com/sprnva/sprnva/blob/master/app/views/layouts/profile.php)
     - if you are using login and registration run `composer update` skip otherwise.
 
 ### # Medium Impact Changes
