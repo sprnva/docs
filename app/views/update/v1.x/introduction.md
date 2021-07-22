@@ -20,10 +20,10 @@ Simple codebase yet powerful, embraces your basic knowledge of creating a web ap
 - beautiful routing
 - protected routes by authentication
 - can run on php >= php5.5
-- built in login and registration
+- authentication scaffolding using sprnva/fortify
 - forgot password with email sending password reset link
 - inspired in MVC approach
-- simple database migration *(sync database development for everyone)*
+- simple database migration
 - can send email with just a simple setup
 - bootstrap 4 stack (can use diffrent stacks)
 - jquery-3.6.0 stack (can use diffrent stacks)

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "sprnva/framework",
-            "version": "v1.3.7",
+            "version": "v1.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sprnva/framework.git",
-                "reference": "16328b2f027f607b8fdd7541e840c385879b9773"
+                "reference": "57415e93bbd82047e0d5f2c5001bbce48a8b8c87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sprnva/framework/zipball/16328b2f027f607b8fdd7541e840c385879b9773",
-                "reference": "16328b2f027f607b8fdd7541e840c385879b9773",
+                "url": "https://api.github.com/repos/sprnva/framework/zipball/57415e93bbd82047e0d5f2c5001bbce48a8b8c87",
+                "reference": "57415e93bbd82047e0d5f2c5001bbce48a8b8c87",
                 "shasum": ""
             },
             "type": "library",
@@ -28,6 +28,9 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Judywen Guapin",
@@ -41,9 +44,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sprnva/framework/issues",
-                "source": "https://github.com/sprnva/framework/tree/v1.3.7"
+                "source": "https://github.com/sprnva/framework/tree/v1.3.13"
             },
-            "time": "2021-07-21T05:20:38+00:00"
+            "time": "2021-07-22T05:10:58+00:00"
         }
     ],
     "packages-dev": [],
