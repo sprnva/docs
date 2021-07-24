@@ -7,7 +7,7 @@ In case you're not familiar with cross-site request forgeries, let's discuss an 
 
 Without CSRF protection, a malicious website could create an HTML form that points to your application's `/user/email` route and submits the malicious user's own email address:
 
-```
+```php
 <form action="https://your-application.com/user/email" method="POST">
     <input type="email" value="malicious-email@example.com">
 </form>
@@ -26,7 +26,7 @@ Sprnva automatically generates a CSRF `"token"` for each active user session man
 
 Secure your request by adding a csrf.
 
-```
+```php
 <form method="POST" action="<?= route('/reset/password') ?>">
 
     <?= csrf(); ?>
@@ -35,7 +35,7 @@ Secure your request by adding a csrf.
 ```
 
 `csrf()` helper is same as saying:
-```
+```php
 <input type='hidden' name='csrf_token' value='$2y$10$NCwqep6AgCIJGoSLVfMbm.svXCAtwrVX7uUG4nrp.z7LZQ2owrZ6a'>
 ```
 

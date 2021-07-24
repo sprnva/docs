@@ -9,7 +9,7 @@ Then configure your gmail account to act like our email server and turn on less 
 ![alt text](public/storage/images/gmail_config.png)
 
 Configure smtp credentials on `config.php`
-```
+```php
 // EMAIL
 'smtp_host' => '',
 'smtp_username' => '',
@@ -22,13 +22,13 @@ Configure smtp credentials on `config.php`
 As for the `smtp_host` you can use `smtp.gmail.com` and for the `smtp_username` use your gmail account email address also your gmail account password as `smtp_password` and the `smtp_port` is best with `587`.
 
 Then the email helper function look like this:
-```
+```php
 sendMail($subject, $body, $recipients);
 ```
 
 Where **$subject** is string, **$body** is text or html, **$recipients** string email of the recipient.
 
 The `sendMail()` helper return an array with 2 values.
-```
+```php
 ["message" => "Message has been sent", "status" => "success"]
 ```

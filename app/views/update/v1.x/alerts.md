@@ -11,6 +11,6 @@ After you set a `with_msg()` you can now show it to the views using the `alert_m
 
 ### # How to display to views?
 Just echo the `alert_msg()` helper function in your views like this.
-```
+```php
 <?= alert_msg() ?>
 ```

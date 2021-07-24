@@ -29,6 +29,13 @@
 <script src="<?= public_url('/assets/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?= public_url('/assets/adminlte/js/adminlte.min.js') ?>"></script>
+<script>
+    // $("pre code").addClass("language-php");
+    document.querySelectorAll('pre code').forEach(el => {
+        // then highlight each
+        hljs.highlightElement(el);
+    });
+</script>
 </body>
 
 </html>

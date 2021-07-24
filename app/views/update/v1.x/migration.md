@@ -12,7 +12,7 @@ Here's what database migration UI look like.
 ## # INSTANCES
 Instances is the mode that we use to identify a migration file.
 
-```
+```text
 NEW - This will create the table specified
 RENAMETABLE - Will rename the table specified
 DROP - This will drop the table specified
@@ -23,28 +23,28 @@ CHANGE - It's like altering the table columns
 Let's take a look how to use this instances.
 
 #### # NEW
-```
+```text
 up: will create the table
 down: will drop the table
 ```
 ![alt text](public/storage/images/new_instance.png)
 
 #### # RENAMETABLE
-```
+```text
 up: will rename the table "from" => "to"
 down: reverse the up "from" => "to"
 ```
 ![alt text](public/storage/images/renametable_instance.png)
 
 #### # DROP
-```
+```text
 up: "" => "" will drop the specified table
 down: create the dropped table
 ```
 ![alt text](public/storage/images/drop_instance.png)
 
 #### # CHANGE
-```
+```text
 up: "column name" => "changes" this will change the column name and datatypes
 down: reverse the up "column name" => "changes"
 
@@ -64,7 +64,7 @@ How these button really works?
 
 ### # Migrate
 This will migrate the migration files database is intact no data will be overidden.
-```
+```text
 - will make sure database repository exist
 - attach a migration batch number
 - will prepare the pending migrations or "outstanding migrations"
@@ -75,7 +75,7 @@ This will migrate the migration files database is intact no data will be overidd
 
 ### # Fresh
 This is where we drop all tables and replace a new one base on our migration and stored database.
-```
+```text
 - First we drop all the tables in database
 - and if the database repository does not exist, we create
 - after that, we load the stored database schema if exist
@@ -85,7 +85,7 @@ This is where we drop all tables and replace a new one base on our migration and
 
 ### # Rollback
 This will rollback 1 step down base on last batch number.
-```
+```text
 - ensure database repository exist
 - we get the completed migrations on our database repository base on the last batch number
 - then we build the schema of the completed migrations
@@ -94,7 +94,7 @@ This will rollback 1 step down base on last batch number.
 
 ### # Make
 This will add a new migration file.
-```
+```php
 ${{ varName }} = [
 	"mode" => "",
 	"table"	=> "",
@@ -121,7 +121,7 @@ this accepts:
 
 ## # Dumps
 As time goes by, migrations will be immense. We need to shrink it down, and dump is the answer for that. We have dumps to clear out migrations while migration schemas is dump in a .sql file that will be soon loaded as we migrate or need a fresh database environment.
-```
+```text
 - ensure database repository exist
 - we get the completed migrations on our database repository base on the last batch number
 - then we build the schema of the completed migrations
@@ -130,13 +130,13 @@ As time goes by, migrations will be immense. We need to shrink it down, and dump
 
 #### # Dump
 This will dump the database to an .sql file base on your database config.
-```
+```text
 - output: .sql file in the database/schema dir
 ```
 
 #### # Dump Prune
 This will dump the database to an .sql file base on your database config and prune migration files.
-```
+```text
 - output: .sql file in the database/schema dir
 - this removes all the migration files in your local repository
 ```

@@ -4,14 +4,14 @@ Sprnva has a built in request validator and it's easy to use.
 
 In order to protect informations to pass through we need to validate the user's request through a validator and extract and sanitized each request to avoid special characters and converts code to htmlentities.
 
-```
+```php
 Request::validate($route, $input_to_validate = []);
 ```
 
 Example of request validations
 
 In views:
-```
+```html
 <form method="POST" action="<?= route("/register") ?>">
     <?= csrf() ?>
     <div class="form-group">
@@ -41,12 +41,12 @@ In views:
 ```
 
 In routes:
-```
+```php
 $router->post("/register", ['RegisterController@store']);
 ```
 
 In controller:
-```
+```php
 $request = Request::validate('/register', [
     'email' => ['required', 'email'],
     'username' => ['required'],
@@ -71,7 +71,7 @@ Validation type is compose of parameters to validate your inputs like `['require
 
 ![alt text](public/storage/images/validation_type.png)
 
-```
+```php
 $request = Request::validate('/register', [
     'email' => ['required', 'email'],
     'username' => ['required'],
@@ -82,7 +82,7 @@ Inside the validate method, we get the request and sanitize all the request to a
 
 After the validation of requested data. We can now get the data:
 
-```
+```php
 $register_user = [
     'email' => $request['email'],
     'fullname' => $request['name'],

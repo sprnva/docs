@@ -25,9 +25,16 @@ use App\Core\Auth;
 	<!-- overlayScrollbars -->
 	<link rel="stylesheet" href="<?= public_url('/assets/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
 
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
 	<style>
 		img {
 			width: 100% !important;
+		}
+
+		pre {
+			box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
 		}
 	</style>
 
@@ -267,6 +274,15 @@ use App\Core\Auth;
 								<i class="nav-icon fas fa-envelope"></i>
 								<p>
 									E-mail
+								</p>
+							</a>
+						</li>
+						<li class="nav-header">Packages</li>
+						<li class="nav-item">
+							<a href="<?= route('/packages/fortify') ?>" class="nav-link">
+								<i class="nav-icon fas fa-dungeon"></i>
+								<p>
+									Fortify
 								</p>
 							</a>
 						</li>

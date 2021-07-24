@@ -32,3 +32,7 @@ $router->get('/csrf', ['WelcomeController@csrf']);
 $router->get('/validation', ['WelcomeController@validation']);
 $router->get('/credits', ['WelcomeController@credits']);
 $router->get('/deployment', ['WelcomeController@deployment']);
+
+$router->group(["prefix" => "packages"], function ($router) {
+    $router->get('/fortify', ['WelcomeController@fortify']);
+});

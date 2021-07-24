@@ -3,9 +3,31 @@
 Sprnva is a MVC approach so we also have a Controller.
 
 You will find the controller at app/controllers. Then this is how you declare a controller.
-![alt text](public/storage/images/controllers.png)
+```php
+<?php
 
-### # Recommended controller verbs
+namespace App\Controllers;
+
+class WelcomeController
+{
+    protected $pageTitle;
+
+    public function index()
+    {
+        $pageTitle = "Home";
+
+        return view('/home', compact('pageTitle'));
+    }
+}
+```
+##### <span style="color:red">**ALWAYS REMEMBER WHEN ADDING A CLASS, DON'T FORGET TO ADD IT'S NAMESPACE AND RE-INITIALIZE THE CLASS AUTOLOADER USING COMPOSER.**</span>
+
+This is how you re-initialize class autoloader using composer.
+```bash
+composer dump-autoload
+```
+
+### # Recommended controller Method Name
 
 <table class="table table-bordered">
     <thead>
@@ -72,8 +94,8 @@ You will find the controller at app/controllers. Then this is how you declare a 
 ##### <span style="color:red">**ALWAYS REMEMBER WHEN ADDING A CLASS, DON'T FORGET TO ADD IT'S NAMESPACE AND RE-INITIALIZE THE CLASS AUTOLOADER USING COMPOSER.**</span>
 
 This is how you re-initialize class autoloader using composer.
-```
-$ composer dump-autoload
+```bash
+composer dump-autoload
 ```
 
 ### # Purpose of Controller?

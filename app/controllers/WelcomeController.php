@@ -230,4 +230,14 @@ class WelcomeController
 
         return view('home', compact('pageTitle', 'data'));
     }
+
+    public function fortify()
+    {
+        $pageTitle = "Fortify";
+
+        $mdContent = file_get_contents($this->folder . '/fortify.md');
+        $data = $this->pd->text($mdContent);
+
+        return view('home', compact('pageTitle', 'data'));
+    }
 }

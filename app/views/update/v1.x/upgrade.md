@@ -3,7 +3,7 @@
 ---
 Updating Dependencies via Composer
 - First we need to update the `composer.json` file
-    ```
+    ```json
     "require": {
         "sprnva/fortify": "^1.0",
         "sprnva/framework": "^1.3"
@@ -35,11 +35,11 @@ If `sprnva/fortify` is not present in your composer.json, maybe your application
 ### # Medium Impact Changes
 - remove the `system/` directory
 - in `index.php` remove the boostrap include:
-```
+```php
 require 'system/bootstrap.php';
 ```
 - in `index.php` change the `Router::load` parameter to:
-```
+```php
 Router::load(__DIR__ . '/vendor/sprnva/framework/src/Routes.php')
 ```
 - everytime a new version is release just `composer update` to update your framework

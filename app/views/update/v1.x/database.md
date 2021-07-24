@@ -7,22 +7,22 @@ The database connection and querybuilder instance is already in The DI container
 
 Sprnva query builder has:
 
-```
-- select
-- selectLoop
-- insert
-- update
-- delete
-- query
-- seeder
-- with
-- get
+```php
+- select()
+- selectLoop()
+- insert()
+- update()
+- delete()
+- query()
+- seeder()
+- with()
+- get()
 ```
 
 ## # How to use this database querybuilder? 
 Declare the instance first then the method, like this example.
 
-```
+```php
 DB()->select($columns, $table, $whereParams);
 DB()->selectLoop($columns, $table, $whereParams);
 DB()->insert($table, $formData, $params);
@@ -45,23 +45,23 @@ DB()->selectLoop($columns, $table, $whereParams)
 
 ### # select
 This is for the fetching single row in the table
-```
+```php
 DB()->select($columns, $table, $whereParams = '')->get();
 ```
 
 This is how you get the and display the values of select.
-```
+```php
 echo $user_data['fullname'];
 ```
 
 ### # selectLoop
 This is for the fetching many rows in the table
-```
+```php
 $user_data = DB()->selectLoop('*', 'users', 'id > 0')->get();
 ```
 
 This is how you get the and display the values of selectLoop.
-```
+```php
 foreach($user_data as $users){
     echo $users['fullname'];
 }
@@ -69,7 +69,7 @@ foreach($user_data as $users){
 
 ### # insert
 This is for the inserting a row in the table. Where`$form_data` is array `[ "table column" => "value" ]`. The $last_id is optional only, if set to `"Y"` the method will return the last_insert_id.
-```
+```php
 $form_data = [
     'email' => 'j@testmail.com',
     'fullname' => 'Judywen Guapin'
@@ -80,7 +80,7 @@ DB()->insert('users', $form_data);
 
 ### # update
 This is for the updating a row in the table. Where `$form_data` is array `[ "table column" => "value" ]`. The `$whereParams` is optional only.
-```
+```php
 DB()->update($table, $formData, $whereParams = '');
 
 $form_data = [
@@ -93,7 +93,7 @@ DB()->update('users', $form_data);
 
 ### # delete
 This is for the deleting a row in the table. The `$whereParams` is optional only.
-```
+```php
 DB()->delete($table, $whereParams = '');
 
 $user_id = Auth::user('id');
@@ -104,7 +104,7 @@ DB()->delete('users', "id = '$user_id'");
 This is for making a query against the database. The `$query` is the query you need to execute. `$fetch` is optional only, if you want to fetch the result of the `$query` just change the `$fetch = "Y"`.
 
 If if `$fetch = "Y"` then add the `->get();` mehod to get the result otherwise do not put `->get();`.
-```
+```php
 $test_query = DB()->query('SELECT * FROM users WHERE id > 0', 'Y');
 
 foreach($test_query as $test){
@@ -173,8 +173,12 @@ This also applies and tested on `select()` method same process same logic and th
 This way we avoid the querying data to our database inside our loop and makes our query repeats until the end of the iteration. Put in mind that if you have a 100,000 items in our table and we iterate all of it then we query inside the loop to get the foreign key data, imagine the pain that our server gets. Cheer up! sprnva got this under the hood.
 
 ### # get
-This will literaly get the slected data from our table. This will end the chain of `select()->get();`, `selectLoop()->get();`, `query()->get();` => if `$fetch = "Y"`
-
+This will literaly get the slected data from our table. This will end the chain of: 
+```php
+select()->get();
+selectLoop()->get();
+query()->get(); // if $fetch = "Y"
+```
 <br>
 
 #### NOTE: `App::get('database')` and `DB()` is the same, you can use either. We recommend to use the helper function `DB()` for simplicity and a more readable code.
