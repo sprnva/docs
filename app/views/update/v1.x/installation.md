@@ -34,7 +34,7 @@ cd example-app
 ##### <span style="color: red;">*(if not yet installed in your machine)*</span>
 
 - Windows 
-    - click here: [https://getcomposer.org/installer](https://getcomposer.org/installer)
+    - click here: [https://getcomposer.org/Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe)
 - MacOS 
     - copy this to your terminal:
         ```bash
