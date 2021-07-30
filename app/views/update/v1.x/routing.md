@@ -86,7 +86,7 @@ Route::group($param, $action);
 
 For example, let's take a look with route grouping in our profile module.
 ```php
-Route::group(['prefix' => 'profile', 'middleware' => ['auth']], function ($router) {
+Route::group(['prefix' => 'profile', 'middleware' => ['auth']], function () {
     Route::get("/", ['ProfileController@index']);
     Route::post('/', ['ProfileController@update']);
     Route::post('/changepass', ['ProfileController@changePass']);
@@ -96,7 +96,5 @@ Route::group(['prefix' => 'profile', 'middleware' => ['auth']], function ($route
 grouping is just like saying: `(/profile, /profile/changepass, /profile/delete)`.
 
 First we need to define a prefix to our group by saying `['prefix' => 'your-desired-prefix']` and we define the middleware saying `['middleware' => ['auth']]`. Basically when saying `['middleware' => ['auth']]` all the routes the we define inside the group will be protected by auth. If you are not authenticated you cannot access this defined routes.
-
-In `$action` we pass the `$router` variable that contains our Router class instance with this, we can continue to register our routes inside our callback function.
 
 This is how easy we declare and used routing in sprnva.

@@ -12,13 +12,13 @@ Released July 30, 2021
 - restructure routing [`$router→get()` to `Rout::get()`]
 - refactor route middleware from string to array  `[{action}, 'auth']` to `[{action}, ['auth', 'register']]`
 
-
 #### sprnva/sprnva v1.3.16
 **changes in core/app**
 **[ in /index.php ]**
 - refactor `use App\Core\Router;` to: `use App\Core\Routing\Route;`
 - refactor `Router::load()` to:
- ```php
+
+```php
 Route::register(
 	// request uri
 	Request::uri(),
@@ -27,6 +27,7 @@ Route::register(
 	Request::method()
 );
 ```
+
 **[ in config/routes/web.php ]**
 - below <?php add this: `use App\Core\Routing\Route;`
 - refactor `$router->` to: `Route::`
