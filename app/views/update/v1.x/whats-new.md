@@ -1,33 +1,40 @@
 # # What's new?
 <br>
 ### Release v1.x
-Released July 15, 2021
+Released July 30, 2021
 
 ---
-- fortified routes
-- change csrf tokens to bcrypt algorithm
-- change welcome page
-- fix no showing of login page after deployed in a hosting server
+#### sprnva/framework v1.3.16
+**changes in core/framework**
+- added withCount helper
+- dd now supports objects
+- added new validation [`unique:{table}`]
+- restructure routing [`$router→get()` to `Rout::get()`]
+- refactor route middleware from string to array  `[{action}, 'auth']` to `[{action}, ['auth', 'register']]`
 
-#### Patch
-- new
-    - login and registration is not built in anymore
-    - add option to integrate login and registration
-    - added a package auth scaffolding named fortify : `composer require sprnva/fortify`
 
----
+#### sprnva/sprnva v1.3.16
+**changes in core/app**
+**[ in /index.php ]**
+- refactor `use App\Core\Router;` to: `use App\Core\Routing\Route;`
+- refactor `Router::load()` to:
+ ```php
+Route::register(
+	// request uri
+	Request::uri(),
 
-- old
-    - install sprnva via composer. The command: "`composer create-project sprnva/sprnva example-app`"
-    - refactor framework for centralized application updates
-    - update your sprnva application via composer. The command: "`composer update`"
-    - removed directory `system/`
-    - removed unused css and js files
-    - changed sprnva logo
-    - `redirect()` with message will be formatted as `["message" => "", "status" => ""]`
-    - added helper `with_msg()` with 2 params `["message" => "", "status" => ""]`
-    - response message is now disposable
-    - `msg()` helper is renamed to `alert_msg()` helper
-    - added recommendation for controller method naming
-    - added a new directory `public/storage`
-    - renamed `config.example.php` to `config.example`
+	// the method use of the uri
+	Request::method()
+);
+```
+**[ in config/routes/web.php ]**
+- below <?php add this: `use App\Core\Routing\Route;`
+- refactor `$router->` to: `Route::`
+- and when using auth middleware should be like this:
+```php
+Route::get('/home', ['WelcomeController@home', ['auth']]);
+```
+
+#### sprnva/fortify v1.0.6
+**changes in package**
+- restructured routes from the latest released of the framework

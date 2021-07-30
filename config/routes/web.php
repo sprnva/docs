@@ -1,38 +1,37 @@
 <?php
 
-use App\Core\App;
-use App\Core\Auth;
+use App\Core\Routing\Route;
 use App\Core\Request;
 
-$router->post('/change-version', function () {
+Route::post('/change-version', function () {
     $request = Request::validate();
     $_SESSION['VERSION'] = $request['selectedVersion'];
 });
 
 // your routes goes here
-$router->get('/', ['WelcomeController@whatsNew']);
-$router->get('/introduction', ['WelcomeController@introduction']);
-$router->get('/installation', ['WelcomeController@installation']);
-$router->get('/upgrade-guide', ['WelcomeController@upgradeGuide']);
-$router->get('/file-structure', ['WelcomeController@fileStructure']);
-$router->get('/databases', ['WelcomeController@databases']);
-$router->get('/authentication', ['WelcomeController@authentication']);
-$router->get('/registration', ['WelcomeController@registration']);
-$router->get('/migration', ['WelcomeController@migration']);
-$router->get('/routing', ['WelcomeController@routing']);
-$router->get('/controllers', ['WelcomeController@controllers']);
-$router->get('/views', ['WelcomeController@views']);
-$router->get('/helpers', ['WelcomeController@helpers']);
-$router->get('/alerts', ['WelcomeController@alerts']);
-$router->get('/argon-template', ['WelcomeController@argonTemplate']);
-$router->get('/adminty-template', ['WelcomeController@admintyTemplate']);
-$router->get('/adminlte-template', ['WelcomeController@adminlteTemplate']);
-$router->get('/email', ['WelcomeController@email']);
-$router->get('/csrf', ['WelcomeController@csrf']);
-$router->get('/validation', ['WelcomeController@validation']);
-$router->get('/credits', ['WelcomeController@credits']);
-$router->get('/deployment', ['WelcomeController@deployment']);
+Route::get('/', ['WelcomeController@whatsNew']);
+Route::get('/introduction', ['WelcomeController@introduction']);
+Route::get('/installation', ['WelcomeController@installation']);
+Route::get('/upgrade-guide', ['WelcomeController@upgradeGuide']);
+Route::get('/file-structure', ['WelcomeController@fileStructure']);
+Route::get('/databases', ['WelcomeController@databases']);
+Route::get('/authentication', ['WelcomeController@authentication']);
+Route::get('/registration', ['WelcomeController@registration']);
+Route::get('/migration', ['WelcomeController@migration']);
+Route::get('/routing', ['WelcomeController@routing']);
+Route::get('/controllers', ['WelcomeController@controllers']);
+Route::get('/views', ['WelcomeController@views']);
+Route::get('/helpers', ['WelcomeController@helpers']);
+Route::get('/alerts', ['WelcomeController@alerts']);
+Route::get('/argon-template', ['WelcomeController@argonTemplate']);
+Route::get('/adminty-template', ['WelcomeController@admintyTemplate']);
+Route::get('/adminlte-template', ['WelcomeController@adminlteTemplate']);
+Route::get('/email', ['WelcomeController@email']);
+Route::get('/csrf', ['WelcomeController@csrf']);
+Route::get('/validation', ['WelcomeController@validation']);
+Route::get('/credits', ['WelcomeController@credits']);
+Route::get('/deployment', ['WelcomeController@deployment']);
 
-$router->group(["prefix" => "packages"], function ($router) {
-    $router->get('/fortify', ['WelcomeController@fortify']);
+Route::group(["prefix" => "packages"], function () {
+    Route::get('/fortify', ['WelcomeController@fortify']);
 });

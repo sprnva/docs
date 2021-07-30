@@ -16,6 +16,8 @@ Sprnva query builder has:
 - query()
 - seeder()
 - with()
+- andFilter()
+- withCount()
 - get()
 ```
 
@@ -32,6 +34,9 @@ DB()->query($query, $fetch);
 DB()->seeder($table, $length, $tableColumns = []);
 
 DB()->selectLoop($columns, $table, $whereParams)
+    -andFilter([
+        'relational-table' => 'additional-where-parameters'
+    ])
     ->with([
         'relational-table' => [
             'foreign-id-in-the-selected-table',
@@ -123,7 +128,7 @@ DB()->seeder($table, $length, $tableColumns = []);
 ```
 example:
 ```php
-$router->get('/seed', function () {
+Route::get('/seed', function () {
     $table = "customers";
     $length = 1000;
     $user_id = Auth::user('id');
@@ -142,9 +147,9 @@ this will seed datas to the selected table with the number of iteration with the
 ### # with
 Sometimes we forgot the n+1 problem in developing and fetching datas in our application. This problem can cause tremendous amount of speed/memory consumption and creates a low performance application. Sprnva solve this problem using `with()` method.
 
-When using the `with()` method this will add all the data of the foreign id to the result of the selected table.
+When using the `with()` method this will add all the data of the foreign key to the result of the selected table.
 
-Using this method is like saying as:  `get this selected table "with" all the data of it's selected foreign id`
+Using this method is like saying as:  `get this selected table "with" all the data of it's selected foreign key`
 ```php
 with([
     'relational-table' => [
@@ -152,6 +157,30 @@ with([
         'primary-key-column-of-the-relational-table'
     ]
 ])
+```
+
+This is how we fetch the result of the `with()` method:
+```php
+Route::get('/with', function () {
+
+    $projects = DB()->selectLoop("*","projects", "id > 0")
+        ->with([
+            "users" => ['user_id', 'id'],
+            "roles" => ['roles_id', 'id']
+        ])
+        ->get();
+
+    foreach($projects as $project){
+
+        echo "Project Name: " . $project['project_name'];
+        echo "<br>";
+        echo "Assigned Person : ". $project['users']['fullname'];
+        echo "<br>";
+        echo "The Role : ". $project['roles']['role'];
+
+    };
+
+});
 ```
 
 ![alt text](public/storage/images/with-method.png)
@@ -171,6 +200,70 @@ Behind the scenes, first the `with()` method will get all the selected table dat
 This also applies and tested on `select()` method same process same logic and the result is the same.
 
 This way we avoid the querying data to our database inside our loop and makes our query repeats until the end of the iteration. Put in mind that if you have a 100,000 items in our table and we iterate all of it then we query inside the loop to get the foreign key data, imagine the pain that our server gets. Cheer up! sprnva got this under the hood.
+
+### # andFilter
+An additional `where` parameter to the `with()` method. Placement of this method is before the `->with()` method.
+
+```php
+andFilter([
+    'relational-table' => "additonal-where-parameters"
+])
+```
+
+This is how we use the `andFilter()` method:
+```php
+Route::get('/get-user-task', function () {
+
+    $userid = Auth::user('id');
+    $projectCode = 'J6K5L4MB21';
+
+    $tasks = DB()->selectLoop("*","tbl_task_member", "projectCode = '$projectCode' and user_id = '$userid'")
+        ->andFilter([
+            "tbl_task" => "status = 2 and priority_stats = 2"
+        ])
+        ->with([
+            "tbl_task" => ['task_id', 'task_id'],
+            "roles" => ['user_id', 'id']
+        ])
+        ->get();
+
+    dd($tasks);
+
+});
+```
+![alt text](public/storage/images/andFilter-method.png)
+
+### # withCount
+Sometimes we forgot the n+1 problem in developing and fetching datas in our application. This problem can cause tremendous amount of speed/memory consumption and creates a low performance application. Sprnva solve this problem using `withCount()` method.
+
+When using the `withCount()` method this will add the total number of rows of the foreign table to the result of the selected table.
+
+Using this method is like saying as:  `get this selected table "withCount" all the rows of it's selected foreign key`
+```php
+withCount([
+    'relational-table' => [
+        'foreign-id-in-the-selected-table',
+        'primary-key-column-of-the-relational-table'
+    ]
+])
+```
+
+This is how we fetch the result of the `withCount()` method:
+```php
+Route::get('/withCount', function () {
+    $users = DB()->selectLoop("*","users")
+        ->withCount([
+            "projects" => ['id', 'user_id']
+        ])
+        ->get();
+
+    foreach($users as $user){
+        echo "Total Project of ".$user['fullname'].": ". $user['projects_count'];
+    };
+});
+```
+
+![alt text](public/storage/images/withCount-method.png)
 
 ### # get
 This will literaly get the slected data from our table. This will end the chain of: 

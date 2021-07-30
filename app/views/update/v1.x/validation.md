@@ -42,14 +42,14 @@ In views:
 
 In routes:
 ```php
-$router->post("/register", ['RegisterController@store']);
+Route::post("/register", ['RegisterController@store']);
 ```
 
 In controller:
 ```php
 $request = Request::validate('/register', [
     'email' => ['required', 'email'],
-    'username' => ['required'],
+    'username' => ['required', 'unique:users'],
     'password' => ['required'],
 ]);
 ```
@@ -59,7 +59,10 @@ $request = Request::validate('/register', [
 **$input_to_validate** - An array of input names with a value of the validation types.
 
 ### # Validation Types
-Validation type is compose of parameters to validate your inputs like `['required', 'min:5', 'max:255', 'email']`.
+Validation type is compose of parameters to validate your inputs like:
+```php
+['required', 'min:5', 'max:255', 'email', 'unique:{table}']
+```
 
 **required** - this will set the input as required and validate if the input has values.
 
@@ -69,12 +72,14 @@ Validation type is compose of parameters to validate your inputs like `['require
 
 **email** - this will validate if the input is an email address.
 
+**unique** - this will validate if the input is already existing in a table using the `:{table}`
+
 ![alt text](public/storage/images/validation_type.png)
 
 ```php
 $request = Request::validate('/register', [
     'email' => ['required', 'email'],
-    'username' => ['required'],
+    'username' => ['required', 'unique:users'],
     'password' => ['required', 'min:3', 'max:50'],
 ]);
 ```

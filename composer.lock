@@ -8,23 +8,24 @@
     "packages": [
         {
             "name": "sprnva/framework",
-            "version": "v1.3.13",
+            "version": "v1.3.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sprnva/framework.git",
-                "reference": "57415e93bbd82047e0d5f2c5001bbce48a8b8c87"
+                "reference": "55e7a53ac53c0274ef14e805b3522c123794e5f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sprnva/framework/zipball/57415e93bbd82047e0d5f2c5001bbce48a8b8c87",
-                "reference": "57415e93bbd82047e0d5f2c5001bbce48a8b8c87",
+                "url": "https://api.github.com/repos/sprnva/framework/zipball/55e7a53ac53c0274ef14e805b3522c123794e5f0",
+                "reference": "55e7a53ac53c0274ef14e805b3522c123794e5f0",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "files": [
                     "src/Helpers.php",
-                    "src/bootstrap.php"
+                    "src/bootstrap.php",
+                    "src/Routes.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -44,9 +45,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sprnva/framework/issues",
-                "source": "https://github.com/sprnva/framework/tree/v1.3.13"
+                "source": "https://github.com/sprnva/framework/tree/v1.3.16"
             },
-            "time": "2021-07-22T05:10:58+00:00"
+            "time": "2021-07-30T11:20:50+00:00"
         }
     ],
     "packages-dev": [],
