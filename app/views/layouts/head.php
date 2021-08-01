@@ -35,7 +35,14 @@ use App\Core\Auth;
 
 		pre {
 			padding: 0px;
+			border-radius: 6px;
 			box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+		}
+
+		code {
+			border-radius: 6px;
+			background-color: rgb(110 118 129 / 21%);
+			padding: 2px 4px;
 		}
 	</style>
 

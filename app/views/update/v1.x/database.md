@@ -110,7 +110,7 @@ This is for making a query against the database. The `$query` is the query you n
 
 If if `$fetch = "Y"` then add the `->get();` mehod to get the result otherwise do not put `->get();`.
 ```php
-$test_query = DB()->query('SELECT * FROM users WHERE id > 0', 'Y');
+$test_query = DB()->query('SELECT * FROM users WHERE id > 0', 'Y')->get();
 
 foreach($test_query as $test){
     echo $test['fullname'];
