@@ -34,6 +34,7 @@ use App\Core\Auth;
 		}
 
 		pre {
+			margin-top: 5px;
 			padding: 0px;
 			border-radius: 6px;
 			box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
@@ -43,6 +44,15 @@ use App\Core\Auth;
 			border-radius: 6px;
 			background-color: rgb(110 118 129 / 21%);
 			padding: 2px 4px;
+		}
+
+		.content-wrapper {
+			color: #484545 !important;
+			background-color: #FFF !important;
+		}
+
+		.hljs {
+			background: #fbfbfd !important;
 		}
 	</style>
 
