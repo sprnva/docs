@@ -15,6 +15,7 @@ composer create-project sprnva/sprnva example-app
 cd example-app
 ```
 - After the application has been created, you may start setting up the config with your credentials.
+- set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
 - <span style="color: red;">**if you don't want to add login and registration to your application**</span>:
     - in `config.php` set database `'name' => ''`
 - <span style="color: red;">**if you want to add login and registration to your application**</span>:
