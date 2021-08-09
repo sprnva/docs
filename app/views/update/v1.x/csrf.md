@@ -1,8 +1,8 @@
-# #  CSRF Protection
+# CSRF Protection
 ---
 **Cross-Site Request Forgery (CSRF)** is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. Thankfully, Sprnva makes it easy to protect your application from `cross-site request forgery (CSRF)` attacks.
 
-### # The Vulnerability
+### The Vulnerability
 In case you're not familiar with cross-site request forgeries, let's discuss an example of how this vulnerability can be exploited. Imagine your application has a `/user/email` route that accepts a `POST` request to change the authenticated user's email address. Most likely, this route expects an `email` input field to contain the email address the user would like to begin using.
 
 Without CSRF protection, a malicious website could create an HTML form that points to your application's `/user/email` route and submits the malicious user's own email address:
@@ -21,7 +21,7 @@ If the malicious website automatically submits the form when the page is loaded,
 
 To prevent this vulnerability, we need to inspect every incoming request for a secret session value that the malicious application is unable to access.
 
-### # Preventing CSRF Request
+### Preventing CSRF Request
 Sprnva automatically generates a CSRF `"token"` for each active user session managed by the application. This token is used to verify that the authenticated user is the person actually making the requests to the application. Since this token is stored in the user's session and changes each time the session is regenerated, a malicious application is unable to access it.
 
 Secure your request by adding a csrf.

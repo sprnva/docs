@@ -1,4 +1,4 @@
-# # E-mail
+# E-mail
 ---
 Sprnva has a built in email helper function powered by PHPMailer.
 

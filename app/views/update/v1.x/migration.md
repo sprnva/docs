@@ -1,99 +1,86 @@
-# # Database Migration
+# Database Migration
 ---
 ##### <span style="color:red">**THIS DATABASE MIGRATION IS ONLY USED IN LOCAL DEVELOPMENT AND MIGHT CAUSE DOWNTIME AND ERRORS WHEN USED IN PRODUCTION.**</span>
 
 > Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve. &mdash; Laravel
 
-Access database migration by visiting this URL: `http://localhost/sprnva/migration`
+Access database migration by visiting this URL: `localhost/example-app/migration`
 
-Here's what database migration UI look like.
+Here's the look of our database migration.
 ![alt text](public/storage/images/migration.png)
 
-## # INSTANCES
+## INSTANCES
 Instances is the mode that we use to identify a migration file.
+- **NEW** - This will create a new table in the database
+- **RENAMETABLE** - Will rename a table in the database
+- **DROP** - This will drop a table in the database
+- **CHANGE** - This is like altering the table columns
 
-```text
-NEW - This will create the table specified
-RENAMETABLE - Will rename the table specified
-DROP - This will drop the table specified
-CHANGE - It's like altering the table columns
-```
-
-## # INSTANCE USAGE
+## INSTANCE USAGE
 Let's take a look how to use this instances.
+- The **up** is always used in migrating the migration files.
+- The **down** is used in the rollback of the migration or like a reverse of the **up**
 
-#### # NEW
-```text
-up: will create the table
-down: will drop the table
-```
+### NEW
+The example below is the new instance which will create a table that you fill in the `"table" => ""` line.
+- **up**: will be use in the migration to create the instance.
+- **down**: is the reverse of the `"up"` option which will drop the table in the database. 
+
 ![alt text](public/storage/images/new_instance.png)
 
-#### # RENAMETABLE
-```text
-up: will rename the table "from" => "to"
-down: reverse the up "from" => "to"
-```
+### RENAMETABLE
+The example below is the renametable instance which will rename a table that you fill in the `"table" => ""` line.
+- **up**: rename the table "from-name" => "to-name".
+- **down**: is the reverse of the `"up"`. 
+
 ![alt text](public/storage/images/renametable_instance.png)
 
-#### # DROP
-```text
-up: "" => "" will drop the specified table
-down: create the dropped table
-```
+### DROP
+The example below is the drop instance which will drop a table that you fill in the `"table" => ""` line.
+- **up**: as you can see in the example below the up is set to `"" => ""` it is because this mode is already knows what to do and it's job is to drop the table that you fill in the `"table"` line.
+- **down**: is the reverse of the `"up"`. In this instance this should be creating the table that we drop beacause once again it's the reverse of the **up**.
+
 ![alt text](public/storage/images/drop_instance.png)
 
-#### # CHANGE
-```text
-up: "column name" => "changes" this will change the column name and datatypes
-down: reverse the up "column name" => "changes"
+### CHANGE
+The example below is the change instance which will alter a table that you fill in the `"table" => ""` line.
+- **up**: the changes you want to a table column.
+	- you can add a column and set it's data types
+	- you can change column or its data types
+	- you can also drop a column
+- **down**: is the reverse of the `"up"`.
 
-Column Changes:
-- ADD COLUMN column name DATATYPES HERE
-
-- CHANGE COLUMN column name column name DATATYPES HERE 
-(note that there are 2 column names, the next column name is for renaming a column)
-
-- DROP COLUMN column name
-```
 ![alt text](public/storage/images/change_instance.png)
 
-<br>
-## # Migration Buttons
-How these button really works?
+## Migration Buttons
+Is the button you see at the left side of the migration module. How these button really works?
 
-### # Migrate
-This will migrate the migration files database is intact no data will be overidden.
-```text
-- will make sure database repository exist
+### Migrate
+This will migrate the migration files against the database. This is how the migrate button process the migration:
+- will make sure database repository exist *`talks about the migrations table`*
 - attach a migration batch number
 - will prepare the pending migrations or "outstanding migrations"
 - after that we build the migration schema
 - we run the schema that we built
 - we log the migration to database repository
-```
 
-### # Fresh
-This is where we drop all tables and replace a new one base on our migration and stored database.
-```text
+### Fresh
+This is where we drop all tables and replace a new one base on our migration and stored database if present.
 - First we drop all the tables in database
-- and if the database repository does not exist, we create
+- we create the database repository if does not exist
 - after that, we load the stored database schema if exist
 - then we run the pending migrations on our local repository
 - insert the views schema
-```
 
-### # Rollback
+### Rollback
 This will rollback 1 step down base on last batch number.
-```text
 - ensure database repository exist
 - we get the completed migrations on our database repository base on the last batch number
 - then we build the schema of the completed migrations
 - after that, we remove the migrations from the database repository
-```
 
-### # Make
-This will add a new migration file.
+### Make
+This will add a new migration file base on the default migration stub.
 ```php
 ${{ varName }} = [
 	"mode" => "",
@@ -106,39 +93,37 @@ ${{ varName }} = [
 		"" => ""
 	]
 ];
-
-- This is where we add a migration file in our local repository
-- {{ varName }} will be automatically replaced by the name you specified
-- DIR: database/migrations/
-
-this accepts: 
-1 mode: "NEW", "DROP", "CHANGE", "RENAMETABLE"
-2 table: the target table
-3 primary_key: the primary key of the table
-4 up: Run the migrations
-5 down: Reverse the migrations
 ```
+- This is where we add a migration file in our local repository `dabase/migrations/`
+- `{{ varName }}` will be automatically replaced by the migration file name you enter in the input befor you click the make button.
+- `dabase/migrations/` the directory which our migration files will be stored.
 
-## # Dumps
+the migration file accepts: 
+1. **mode**: "NEW", "DROP", "CHANGE", "RENAMETABLE"
+2. **table**: the target table
+3. **primary_key**: the primary key of the table
+4. **up**: Run the migrations
+5. **down**: Reverse the migrations
+
+## Dumps
 As time goes by, migrations will be immense. We need to shrink it down, and dump is the answer for that. We have dumps to clear out migrations while migration schemas is dump in a .sql file that will be soon loaded as we migrate or need a fresh database environment.
-```text
+
+In `config.php` the `mysql_path` help the dump to do it's thing correctly, beacause if we forgot to set the `mysql_path`, we cannot dump the database correctly that's why we need to locate our `mysql/bin` to tell the dump that we are using the `mysql` to dump the database.
+
+The process of the dumps:
 - ensure database repository exist
 - we get the completed migrations on our database repository base on the last batch number
 - then we build the schema of the completed migrations
 - after that, we remove the migrations from the database repository
-```
+- and dump the schme to a `.sql` file
 
-#### # Dump
-This will dump the database to an .sql file base on your database config.
-```text
-- output: .sql file in the database/schema dir
-```
+### Dump
+This will dump the database to an `.sql` file base on your database config.
+- **output**: `.sql` file in the `database/schema` dir
 
-#### # Dump Prune
-This will dump the database to an .sql file base on your database config and prune migration files.
-```text
-- output: .sql file in the database/schema dir
-- this removes all the migration files in your local repository
-```
+### Dump Prune
+This will dump the database to an `.sql` file base on your database config and prune migration files.
+- **output**: `.sql` file in the `database/schema` dir
+- this `removes all the migration files` in your local repository
 
 ##### <span style="color:red">**THIS DATABASE MIGRATION IS ONLY USED IN LOCAL DEVELOPMENT AND MIGHT CAUSE DOWNTIME AND ERRORS WHEN USED IN PRODUCTION.**</span>

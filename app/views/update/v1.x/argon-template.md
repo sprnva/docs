@@ -1,4 +1,4 @@
-# # Argon Template
+# Argon Template
 ---
 Yes! we want to implement different colours to our sprnva application by picking the nice and free templates out there in the wilds.
 
@@ -8,12 +8,12 @@ Visit sprnva-argon repository on [github/sprnva-argon](https://getcomposer.org/i
 
 ![alt text](public/storage/images/argon-template.png)
 
-### # Step 1
+### Step 1
 Just download the template of your choice then copy all the assets from your downloaded template and paste it to sprnva `public/assets` folder then you've done the first step.
 
 ![alt text](public/storage/images/template-assets.png)
 
-### # Step 2
+### Step 2
 Edit the `views/layouts/head.php` and include your css and js file in the head.
 
 ![alt text](public/storage/images/include-css.png)

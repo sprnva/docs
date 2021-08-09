@@ -1,16 +1,25 @@
-# # Views
+# Views
 ---
-Sprnva is a MVC approach so we also have a Views.
+Sprnva is a MVC approach so we also have a Views where the beautiful stacks of graphical illustration is processed.
 
 You will find the views at `app/views`. Views in sprnva have a naming convention, we added a `.view.php` in order for you to declare a more beautiful parameter using the `view()` helper. Example: `login.view.php`
 
 Then this is how you declare a views inside the controller.
 ```php
-return view('/login');
+<?php
+
+namespace App\Controllers;
+
+class UsersController
+{
+    public function index(){
+        return view('/index');
+    }
+}
 ```
 
-### # Passing parameters
-We can pass a parameter to our views from controller using view() helper. This helper accepts 2 parameters like this:
+### Passing parameters
+We can pass a parameter to our views from controller using `view()` helper. This helper accepts 2 parameters like this:
 ```php
 view($view_name, $params = [])
 ```

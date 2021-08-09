@@ -1,8 +1,8 @@
-# # Controllers
+# Controllers
 ---
-Sprnva is a MVC approach so we also have a Controller.
+Sprnva is a MVC approach so we also have a Controller which all the logics of our page is stored and processed.
 
-You will find the controller at app/controllers. Then this is how you declare a controller.
+You will find the controller at `app/controllers`. Then this is how you declare a basic controller.
 ```php
 <?php
 
@@ -27,8 +27,7 @@ This is how you re-initialize class autoloader using composer.
 composer dump-autoload
 ```
 
-### # Recommended controller Method Name
-
+### Recommended controller Method Name
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -98,5 +97,5 @@ This is how you re-initialize class autoloader using composer.
 composer dump-autoload
 ```
 
-### # Purpose of Controller?
+### Purpose of Controller?
 Controller is the medium where logic, database and view meet.<br> Controller also is the processing area of all the logics to be fetch later in the views.

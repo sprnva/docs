@@ -1,14 +1,14 @@
-# # Authentication
+# Authentication
 ---
-Add a login and registration to your Sprnva application using the authentication scaffolding fortify. The command is simple:
+Add a login and registration to your Sprnva application using the authentication fortify. To install the fortify package, the command is plain simple:
 ```
 composer require sprnva/fortify
 ```
-And it will add login and registration to your application.
+And it will add login and registration to your application in the backend.
 
 ![alt text](public/storage/images/login.png)
 
-### # Forgot Password
+### Forgot Password
 Sprnva has a forgot password for it's user and it's built in already in sprnva and powered by **PHPMailer**.
 ![alt text](public/storage/images/forgot-password.png)
 

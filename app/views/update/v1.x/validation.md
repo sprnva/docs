@@ -1,8 +1,8 @@
-# # Validations
+# Validations
 ---
 Sprnva has a built in request validator and it's easy to use.
 
-In order to protect informations to pass through we need to validate the user's request through a validator and extract and sanitized each request to avoid special characters and converts code to htmlentities.
+In order to protect informations to pass through, we need to validate the user's request through a validator and extract and sanitize each request to avoid special characters and converts code to htmlentities.
 
 ```php
 Request::validate($route, $input_to_validate = []);
@@ -58,7 +58,7 @@ $request = Request::validate('/register', [
 
 **$input_to_validate** - An array of input names with a value of the validation types.
 
-### # Validation Types
+### Validation Types
 Validation type is compose of parameters to validate your inputs like:
 ```php
 ['required', 'min:5', 'max:255', 'email', 'unique:{table}']

@@ -1,6 +1,6 @@
-# # Routing
+# Routing
 ---
-Sprnva has a beautiful routing built in. You will find the routes at `config/routes/web.php`. Then this is how you declare a route.
+Sprnva has a beautiful routing built in. You will find the routes at `config/routes/web.php`. Then this is how you declare a basic route.
 ```php
 Route::get('/uri', ['Controller@method', ['middleware']]);
 ```
@@ -26,39 +26,55 @@ Route::options($uri, $action);
 
 This is what a basic route look like:
 ```php
+// routes is accessible without authenticating
 Route::get("/register", ['RegisterController@index']);
 Route::post("/register", ['RegisterController@store']);
 
+// routes is accessible only if authenticated
 Route::get("/profile", ['ProfileController@index', ['auth']]);
 Route::post('/profile', ['ProfileController@update', ['auth']]);
 ```
 where profile route is protected by middleware auth. It means you cannot access this route directly in the URL without authenticating.
 
-## # Route with parameter
+## Route with parameter
 There's an instance that we need to pass a parameter to our routes. This is how we do it in sprnva.
 ```php
 Route::get("/profile/detail/{id}", ['ProfileController@detail', ['auth']]);
 ```
 Then the controller's method accepts a parameter.
 ```php
-public function detail($id){
-    //code here
+<?php
+
+namespace App\Controllers;
+
+class UsersController
+{
+    public function detail($id){
+        //code here
+    }
 }
 ```
 
-## # Route with multiple parameters
+## Route with multiple parameters
 There's an instance that we need to pass a multiple parameter to our route. This is how we do it in sprnva.
 ```php
 Route::get("/project/view/{id}/test/{userid}", ['ProjectController@view', ['auth']]);
 ```
 Then the controller's method accepts the parameters.
 ```php
-public function view($id, $userid){
-    //code here
+<?php
+
+namespace App\Controllers;
+
+class UsersController
+{
+    public function view($id, $userid){
+        //code here
+    }
 }
 ```
 
-## # Route with closure
+## Route with closure
 Sometimes we do not need a controller to display a view we just need to define a callable parameter in our routes.
 ```php
 Route::get('/home', function () {
@@ -68,14 +84,14 @@ Route::get('/home', function () {
 ```
 With this callable parameter we can do some logic in our routes or even query our database to fetch some data and then pass to our views.
 
-We can also get the route with a parameter and access it inside our callable parameter in our route.
+We can also pass the route with a parameter and access it inside our callable parameter in our route.
 ```php
 Route::get('/profile/detail/{id}', function ($id) {
    echo $id;
 });
 ```
 
-## # Route Grouping
+## Route Grouping
 We sometimes need to group our routes to save extra coding more prefixes and one-by-one tagging out middleware auth. Route groupings is here to save you.
 ```php
 Route::group($param, $action);
@@ -84,7 +100,7 @@ Route::group($param, $action);
 
 **$action** : is a function where we declare the routes inside.
 
-For example, let's take a look with route grouping in our profile module.
+For example, let's take a look with route grouping in our profile route.
 ```php
 Route::group(['prefix' => 'profile', 'middleware' => ['auth']], function () {
     Route::get("/", ['ProfileController@index']);

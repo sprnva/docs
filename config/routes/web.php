@@ -9,7 +9,8 @@ Route::post('/change-version', function () {
 });
 
 // your routes goes here
-Route::get('/', ['WelcomeController@whatsNew']);
+Route::get('/', ['WelcomeController@introduction']);
+Route::get('/whats-new', ['WelcomeController@whatsNew']);
 Route::get('/introduction', ['WelcomeController@introduction']);
 Route::get('/installation', ['WelcomeController@installation']);
 Route::get('/upgrade-guide', ['WelcomeController@upgradeGuide']);
