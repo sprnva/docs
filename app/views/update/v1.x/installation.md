@@ -57,7 +57,7 @@ In order to protect your sensitive credentials, we ignore `config.php` to be com
 **base_url** - it's used to tell the router which is the starting point to read a given url. In local and in hosting it is quite similar:
     - **localhost development**
         - in htdocs we provide a folder name to store our application's files and directories right? then all we have to do is set the `'base_url' => 'example-app'` *("example-app" is the folder name of your app in htdocs)*
-    - **hosting server deployement**
+    - **hosting server deployment**
         - if your application is inside a folder in a hosting server's domain like *`example.com/sprnva/login`* then set `'base_url' => 'sprnva'`
         - if your application is in the root directory of a hosting server's domain like *`example.com/login`* then set `'base_url' => ''`
 
