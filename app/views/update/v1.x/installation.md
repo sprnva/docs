@@ -1,35 +1,11 @@
 # Installation
 ---
-Sprnva is an open-source framework and repository is available at [github/sprnva](https://github.com/sprnva/sprnva). You can see what we sweat behind the scene in this repository.
+Sprnva is an open-source framework and repository is available at [github/sprnva](https://github.com/sprnva/sprnva). You can see what we sweat behind the scenes in Sprnva through this repository.
 
 ## Requirements
 - **Php** version supported: **PHP >= php5.5** *`(latest version recommended)`*
 - In order to run sprnva, you need to install **composer**. Composer is used for class autoloading and for future installation of different packages.
 - **apache** and **mysql** server *(we can use xampp, wampServer and etc.)*
-
-## Installation Via Composer
-If your computer already has PHP and Composer installed, you may create a new Sprnva project by using Composer directly :
-```bash
-composer create-project sprnva/sprnva example-app
-
-cd example-app
-```
-- After the application has been created, you may start setting up the config with your credentials.
-- set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
-- <span style="color: red;">**if you don't want to add login and registration to your application**</span>:
-    - in `config.php` set database `'name' => ''`
-- <span style="color: red;">**if you want to add login and registration to your application**</span>:
-    - after you're done setting up `config.php`, create a database, the name should be the same to your credentials in `config.php`
-    - then in your browser type this in your url:
-    ```bash
-    localhost/example-app/migration
-    ```
-    - when the migration moduel shows, click the fresh button to migrate the default tables.
-    - then add the authentication called fortify via composer :
-    ```bash
-    composer require sprnva/fortify
-    ```
-- finally, you can now build your desired applciation using sprnva.
 
 ## Installing composer
 <span style="color: red;">*(if not yet installed in your machine)*</span>
@@ -48,6 +24,30 @@ cd example-app
         ```bash
         sudo mv composer.phar /usr/local/bin/composer
         ```
+
+## Install Sprnva Using Composer
+If your computer already has PHP and Composer installed, you may create a new Sprnva project by using Composer directly :
+```bash
+composer create-project sprnva/sprnva example-app
+
+cd example-app
+```
+- After the application has been created, you may start setting up the config with your credentials.
+- set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
+- <span style="color: red;">**if you don't want to add login and registration to your application**</span>:
+    - in `config.php` set database `'name' => ''`
+- <span style="color: red;">**if you want to add login and registration to your application**</span>:
+    - after you're done setting up `config.php`, create a database and the name should be the same to your credentials in `config.php`
+    - then we will migrate the default tables. In your browser type this in your url:
+    ```bash
+    localhost/example-app/migration
+    ```
+    - when the migration module shows, click the fresh button to migrate the default tables.
+    - then add the authentication called fortify via composer :
+    ```bash
+    composer require sprnva/fortify
+    ```
+- finally, you can now build your desired application using sprnva.
 
 ## Config
 In order to protect your sensitive credentials, we ignore `config.php` to be committed in the source control. After installation via composer, fill in your desired credentials and know more of it below.

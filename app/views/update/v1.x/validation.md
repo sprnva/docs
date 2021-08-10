@@ -11,7 +11,7 @@ Request::validate($route, $input_to_validate = []);
 
 **$input_to_validate** - An array of input names with a value of the validation types.
 
-Example of request validations
+Let's look some example of request validations
 
 In views:
 ```html
@@ -70,19 +70,60 @@ class RegisterController
 
 ### Validation Types
 Validation type is compose of parameters to validate your inputs like:
+- **required** : this will set the input as required and validate if the input has values.
+- **min** : this will validate and set a minimum `character/s` length to allow.
+- **max** : this will set a maximun `character/s` length to allow.
+- **email** : this will validate if the input is an email address.
+- **unique:{table}** : this will validate if the input is already exist in a table using the `:{table}` option.
+
+### unique:table
+The field under validation must not exist within the given database table.
+
 ```php
-['required', 'min:5', 'max:255', 'email', 'unique:{table}']
+$request = Request::validate('/register', [
+    'email' => ['required', 'email'],
+    'username' => ['required', 'unique:users'],
+    'password' => ['required'],
+]);
 ```
+The above example is when we validate a field using unique. Validation error will be thrown everytime if the validator detects that the user's' request is already existing in the database table. Note that if the `column` option is not specified, the name of the field under validation will be used. In the above case, it's the `username` field.
 
-**required** - this will set the input as required and validate if the input has values.
+### unique:table,column,except,id
+Sometimes, you may wish to ignore a given ID  during the unique validation. For example consider an "update profile" page that include the user's username, email address, and location. You will probably want to verify that the username is unique. However, if the user only changes the email address field and not the username, you do not want a validation error to be thrown because the user is already the owner of the username.
 
-**min** - this will validate and set a minimum `character/s` length to allow.
+To instruct the validator to ignore the user's ID, we'll use the `except` and the `id` option to define the rule.
 
-**max** - this will set a maximun `character/s` length to allow.
+The `unique` validation type has a variety of options:
+ - **table** : the table used to check for validation
+ - **column** : the column used to check if the request is unique.
+ - **except** : the column to ignore.
+ - **id** : the specific value or id of the column to ignore.
 
-**email** - this will validate if the input is an email address.
+#### Specifying A Custom Column Name:
+The `column` option may be used to specify the field's corresponding database column.
+```php
+$user_id = Auth::user('id');
 
-**unique** - this will validate if the input is already existing in a table using the `:{table}`
+$request = Request::validate('/register', [
+    'email' => ['required', 'email'],
+    'username' => ['required', 'unique:users,username,id,'. $user_id],
+    'password' => ['required'],
+]);
+```
+The above example will ignore the user if the user update the email address or the password not the username. Then the validation error will not be thrown. The validator used the `username` option as the `column` to check for the unique validation.
+
+#### No column option specified:
+Note that if the `column` option is not specified, the name of the field under validation will be used. Also take note that the name of the field under validation should be the same as the database column.
+```php
+$user_id = Auth::user('id');
+
+$request = Request::validate('/register', [
+    'email' => ['required', 'email'],
+    'username' => ['required', 'unique:users,id,'. $user_id],
+    'password' => ['required'],
+]);
+```
+The above example is when we do not pass the `column` option in the validator. If the `column` option is not specified, the name of the field under validation will be used. In the above case, it's the `username` field. Then the validator will ignore the user if the user update the email address or the password not the username. Then the validation error will not be thrown.
 
 ![alt text](public/storage/images/validation_type.png)
 
@@ -95,7 +136,7 @@ $request = Request::validate('/register', [
 ```
 Inside the validate method, we get the request and sanitize all the request to avoid storing an html code in our database. We sanitized it by removing white spaces. Unqouting the qouted strings, and convert special characters to HTML entities.
 
-After the validation of requested data. We can now get the data and use this to insert the data to our database:
+After the validation of requested data. We can now get the data and use this to insert to our database:
 
 ```php
 <?php

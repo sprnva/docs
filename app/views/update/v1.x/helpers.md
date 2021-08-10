@@ -23,13 +23,16 @@ public_url('/favicon.ico');
 ### Generate random characters
 Sprnva has a helper function that can generate random characters good for `(ex: product_code, project_code etc.)`. Accepts a parameter `$length` which means how many characters you wanted to print.
 ```php
+<?php
+
 randChar($length = 6);
 ```
 
 ### Redirect
 Redirect use to redirect to another page with a message.
 ```php
-redirect($route, $message = []);
+<?php
+// redirect($route, $message = []);
 
 redirect('/register', ["message" => "Success register", "status" => "success"]);
 ```
@@ -37,7 +40,8 @@ redirect('/register', ["message" => "Success register", "status" => "success"]);
 ### with_msg
 Register an alert message
 ```php
-with_msg(["message" => "", "status" => ""]));
+<?php
+// with_msg(["message" => "", "status" => ""]));
 
 with_msg(["message" => "Success register", "status" => "success"]));
 ```
@@ -51,41 +55,41 @@ Display the message as alert with color
 ### Dump and Die
 Sometime we need to dump something to know the value of that particular `$variable` so `dd()` helper comes to help.
 ```php
+<?php
+
 dd($_SERVER);
 ```
 
 ### DB()
 For simplicity and more readable code we added a helper function to get the instance of our database connection.
 ```php
-DB()
+// DB()
 
-// usage:
 $customerData = DB()->selectLoop('*', 'customers', "id > 0");
 ```
 
 ### abort
 redirect to an error page then die(). This will show the error page base on the error code.
 ```php
-abort($code, $customMessage = '');
+<?php
+// abort($code, $customMessage = '');
 
-// usage:
 abort(404);
+abort(500, 'Internal Error');
 ```
 
 ### bcrypt
 This will hash the given value and return a hash string
 ```php
-bcrypt($value);
+// bcrypt($value);
 
-// usage:
 bcrypt('adminpassword');
 ```
 
 ### checkHash
 Check the given plain value against a hash and return a bool
 ```php
-checkHash($value, $hashedValue);
+// checkHash($value, $hashedValue);
 
-// usage:
 checkHash('adminpassword', '$2y$10$Y4gA0DYX3djhWmMsUrHxL.sF.KVqz5xF37oh.GRVUVjoU9yS03Mia');
 ```

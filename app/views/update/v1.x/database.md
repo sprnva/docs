@@ -22,23 +22,46 @@ Sprnva query builder has:
 Declare the querybuilder and connection instance first then the method.
 
 ## select
-select is for fetching a single row in the table.
-```php
-DB()->select($columns, $table, $whereParams = '')->get();
+select is for retrieving a single row in the table.
 
-$user_data = DB()->select("*", "users", "id = 2")->get();
-```
-This is how you get the result of select.
 ```php
-echo $user_data['fullname'];
+// DB()->select($columns, $table, $whereParams = '')->get();
+
+<?php
+
+namespace App\Controllers;
+
+class UserController
+{
+    public function index()
+    {
+        $user_data = DB()->select("*", "users", "id = 2")->get();
+
+        return view('/index', compact('user_data'));
+    }
+}
 ```
+The `get` method return the result of the query where each result is an array. You may access each column's value by accessing the column like this `$user_data['fullname']`.
 
 ## selectLoop
 selectLoop is for retrieving many rows from the table.
-```php
-DB()->selectLoop($columns, $table, $whereParams);
 
-$user_data = DB()->selectLoop('*', 'users', 'id > 0')->get();
+```php
+// DB()->selectLoop($columns, $table, $whereParams);
+
+<?php
+
+namespace App\Controllers;
+
+class UserController
+{
+    public function index()
+    {
+        $user_data = DB()->selectLoop('*', 'users', 'id > 0')->get();
+
+        return view('/index', compact('user_data'));
+    }
+}
 ```
 This is how you get the result of selectLoop.
 ```php
@@ -50,63 +73,123 @@ foreach($user_data as $users){
 ## insert
 This is for the inserting a row in the table. Where`$form_data` is array `[ "table-column" => "value" ]`. The last parameter is optional only, default value is `"N"` means nothing to fetch and if it is set to `"Y"` the method will return the `lastInsertId`.
 ```php
-DB()->insert($table, $form_data, $lastInsertId = 'N');
+// DB()->insert($table, $form_data, $lastInsertId = 'N');
 
-$form_data = [
-    'email' => 'j@testmail.com',
-    'fullname' => 'Judywen Guapin'
-];
+<?php
 
-DB()->insert('users', $form_data);
+namespace App\Controllers;
+
+class UserController
+{
+    public function store()
+    {
+        $form_data = [
+            'email' => 'j@testmail.com',
+            'fullname' => 'Judywen Guapin'
+        ];
+
+        DB()->insert('users', $form_data);
+    }
+}
 ```
 Take note that the `email` and `fullname` is the column name in your selected table which is `users`.
+
+Always remember that the `insert` method return a integer result, if the result is `1` it is true then `0` is false. False if the query produce an error and true if the query is successfully executed against the database.
 
 ## update
 This is for the updating a row in the table. Where `$form_data` is array `[ "table column" => "value" ]`. The `$whereParams` is optional only.
 ```php
-DB()->update($table, $form_data, $whereParams = '');
+// DB()->update($table, $form_data, $whereParams = '');
 
-$form_data = [
-    'email' => 'update@testmail.com',
-    'fullname' => 'jagwarthegreat'
-];
+<?php
 
-DB()->update('users', $form_data);
+namespace App\Controllers;
+
+class UserController
+{
+    public function update()
+    {
+        $form_data = [
+            'email' => 'update@testmail.com',
+            'fullname' => 'jagwarthegreat'
+        ];
+
+        DB()->update('users', $form_data);
+    }
+}
 ```
 Take note that the `email` and `fullname` is the column name in your selected table which is `users`.
+
+Always remember that the `update` method return a integer result, if the result is `1` it is true then `0` is false. False if the query produce an error and true if the query is successfully executed against the database.
 
 ## delete
 This is for the deleting a row in the table. The `$whereParams` is optional only.
 ```php
-DB()->delete($table, $whereParams = '');
+// DB()->delete($table, $whereParams = '');
 
-$user_id = Auth::user('id');
-DB()->delete('users', "id = '$user_id'");
+<?php
+
+namespace App\Controllers;
+
+class UserController
+{
+    public function destroy()
+    {
+        $user_id = Auth::user('id');
+        DB()->delete('users', "id = '$user_id'");
+    }
+}
 ```
+Always remember that the `delete` method return a integer result, if the result is `1` it is true then `0` is false. False if the query produce an error and true if the query is successfully executed against the database.
 
 ## query
 This is for making a raw query against the database. The `$query` is the statement you need to execute. The `$fetch` parameter is optional only, if you want to retrieve the result of the statement just change the `$fetch = "Y"`.
 
 If `$fetch = "Y"` then add the `->get();` mehod to get the result otherwise do not put `->get();`.
 ```php
-// using the query or raw
-DB()->query($query, $fetch = "N");
+// DB()->query($query, $fetch = "N");
 
-$test_query = DB()->query('SELECT * FROM users WHERE id > 0', 'Y')->get();
+<?php
 
-// retrieving the result
+namespace App\Controllers;
+
+class UserController
+{
+    public function index()
+    {
+        $test_query = DB()->query('SELECT * FROM users WHERE id > 0', 'Y')->get();
+        
+        return view('/index', compact('test_query'));
+    }
+}
+```
+And this is how we retrieve the result of the query:
+```php
+// in your views
 foreach($test_query as $test){
     echo $test['fullname'];
 }
+```
 
-// Another example:
-$updateUser = DB()->query('UPDATE users SET fullname = 'test name only' WHERE id = 1');
+Another example is using the `query` method to update a column data in a table.
+```php
+<?php
+
+namespace App\Controllers;
+
+class UserController
+{
+    public function update()
+    {
+        DB()->query('UPDATE users SET fullname = 'test name only' WHERE id = 1');
+    }
+}
 ```
 
 ## seeder
 Insert multiple data against the database or seed data to the database with a selected table and set the number of iterations and column values using the seeder method.
 ```php
-DB()->seeder($table, $length, $tableColumns = []);
+// DB()->seeder($table, $length, $tableColumns = []);
 
 // using the seeder
 Route::get('/seed', function () {
