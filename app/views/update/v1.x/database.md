@@ -48,9 +48,9 @@ foreach($user_data as $users){
 ```
 
 ## insert
-This is for the inserting a row in the table. Where`$form_data` is array `[ "table column" => "value" ]`. The last parameter is optional only, default value is `"N"` means nothing to fetch and if it is set to `"Y"` the method will return the `last_insert_id`.
+This is for the inserting a row in the table. Where`$form_data` is array `[ "table-column" => "value" ]`. The last parameter is optional only, default value is `"N"` means nothing to fetch and if it is set to `"Y"` the method will return the `lastInsertId`.
 ```php
-DB()->insert($table, $formData, $lastInsertId = 'N');
+DB()->insert($table, $form_data, $lastInsertId = 'N');
 
 $form_data = [
     'email' => 'j@testmail.com',
@@ -64,7 +64,7 @@ Take note that the `email` and `fullname` is the column name in your selected ta
 ## update
 This is for the updating a row in the table. Where `$form_data` is array `[ "table column" => "value" ]`. The `$whereParams` is optional only.
 ```php
-DB()->update($table, $formData, $whereParams = '');
+DB()->update($table, $form_data, $whereParams = '');
 
 $form_data = [
     'email' => 'update@testmail.com',
@@ -110,9 +110,11 @@ DB()->seeder($table, $length, $tableColumns = []);
 
 // using the seeder
 Route::get('/seed', function () {
+
     $table = "customers";
     $length = 1000;
     $user_id = Auth::user('id');
+
     $tableColumns = [
         "name" => randChar(7),
         "address" => randChar(),
@@ -123,14 +125,14 @@ Route::get('/seed', function () {
     echo $response;
 });
 ```
-this will seed datas to the selected table which is `customers` with the number of `1000` iterations and a column names with values to seed.
+this will seed datas to the selected table which is `customers` with the number of `1000` iterations and a column names with values to seed from the `$tableColumns`.
 
 ## with
 Sometimes we forgot the n+1 problem in developing and fetching datas in our application. This problem can cause tremendous amount of speed/memory consumption and creates a low performance application. Sprnva solve this problem using `with` method.
 
 When using the `with` method this will add all the data of the foreign key to the result of the selected table.
 
-Using this method is like saying as:  `get this selected table "with" all the data of it's selected foreign key`
+Using this method is like saying as:  `"get this selected table "with" all the data of it's selected foreign key"`
 ```php
 with([
     'relational-table' => [
@@ -138,6 +140,24 @@ with([
         'primary-key-column-of-the-relational-table'
     ]
 ])
+
+/**
+ * In our example below the database look like this
+ * 
+ * projects
+ *  - id
+ *  - user_id
+ *  - roles_id
+ * 
+ * 
+ * users
+ *  - id
+ * 
+ * 
+ * roles
+ *  - id
+ * 
+*/
 
 // when using the with method
 Route::get('/with', function () {
@@ -221,8 +241,7 @@ Route::get('/get-user-task', function () {
         ->with([
             "tbl_task" => ['task_id', 'task_id'],
             "roles" => ['user_id', 'id']
-        ])
-        ->get();
+        ])->get();
 
     dd($tasks);
 
@@ -249,8 +268,7 @@ Route::get('/withCount', function () {
     $users = DB()->selectLoop("*","users")
         ->withCount([
             "projects" => ['id', 'user_id']
-        ])
-        ->get();
+        ])->get();
 
     foreach($users as $user){
         echo "Total Project of ".$user['fullname'].": ". $user['projects_count'];

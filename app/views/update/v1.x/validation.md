@@ -7,6 +7,9 @@ In order to protect informations to pass through, we need to validate the user's
 ```php
 Request::validate($route, $input_to_validate = []);
 ```
+**$route** - Is used to redirect if the validator detects an error in validating the request.
+
+**$input_to_validate** - An array of input names with a value of the validation types.
 
 Example of request validations
 
@@ -47,16 +50,23 @@ Route::post("/register", ['RegisterController@store']);
 
 In controller:
 ```php
-$request = Request::validate('/register', [
-    'email' => ['required', 'email'],
-    'username' => ['required', 'unique:users'],
-    'password' => ['required'],
-]);
+<?php
+
+namespace App\Controllers;
+
+class RegisterController
+{
+    public function store()
+    {
+        $request = Request::validate('/register', [
+            'email' => ['required', 'email'],
+            'username' => ['required', 'unique:users'],
+            'password' => ['required'],
+        ]);
+    }
+}
+
 ```
-
-**$route** - Is used to redirect if the validator detects an error in validating the request.
-
-**$input_to_validate** - An array of input names with a value of the validation types.
 
 ### Validation Types
 Validation type is compose of parameters to validate your inputs like:
@@ -85,17 +95,34 @@ $request = Request::validate('/register', [
 ```
 Inside the validate method, we get the request and sanitize all the request to avoid storing an html code in our database. We sanitized it by removing white spaces. Unqouting the qouted strings, and convert special characters to HTML entities.
 
-After the validation of requested data. We can now get the data:
+After the validation of requested data. We can now get the data and use this to insert the data to our database:
 
 ```php
-$register_user = [
-    'email' => $request['email'],
-    'fullname' => $request['name'],
-    'username' => $request['username'],
-    'password' => bcrypt($request['password']),
-    'updated_at' => date("Y-m-d H:i:s"),
-    'created_at' => date("Y-m-d H:i:s")
-];
+<?php
 
-DB()->insert("users", $register_user);
+namespace App\Controllers;
+
+class RegisterController
+{
+    public function store()
+    {
+        $request = Request::validate('/register', [
+            'email' => ['required', 'email'],
+            'username' => ['required', 'unique:users'],
+            'password' => ['required'],
+        ]);
+
+        $register_user = [
+            'email' => $request['email'],
+            'fullname' => $request['name'],
+            'username' => $request['username'],
+            'password' => bcrypt($request['password']),
+            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => date("Y-m-d H:i:s")
+        ];
+
+        DB()->insert("users", $register_user);
+    }
+}
+
 ```

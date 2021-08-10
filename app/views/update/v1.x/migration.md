@@ -6,11 +6,11 @@
 
 Access database migration by visiting this URL: `localhost/example-app/migration`
 
-Here's the look of our database migration.
+Here's the look of our database migration module.
 ![alt text](public/storage/images/migration.png)
 
 ## INSTANCES
-Instances is the mode that we use to identify a migration file.
+Instances is the mode that we set and then use to identify a migration file.
 - **NEW** - This will create a new table in the database
 - **RENAMETABLE** - Will rename a table in the database
 - **DROP** - This will drop a table in the database
@@ -23,21 +23,21 @@ Let's take a look how to use this instances.
 
 ### NEW
 The example below is the new instance which will create a table that you fill in the `"table" => ""` line.
-- **up**: will be use in the migration to create the instance.
-- **down**: is the reverse of the `"up"` option which will drop the table in the database. 
+- **up**: will be use in the migration to create the table you fill in the `"table"`.
+- **down**: is the reverse of the `"up"` option which will drop the table in the database. In this case we just leave the down data to `"" => ""` because the migrator already know that when using the `NEW` instance the reverse is always to drop the table that you specify. 
 
 ![alt text](public/storage/images/new_instance.png)
 
 ### RENAMETABLE
 The example below is the renametable instance which will rename a table that you fill in the `"table" => ""` line.
-- **up**: rename the table "from-name" => "to-name".
+- **up**: rename the table `"from-name" => "to-name"`.
 - **down**: is the reverse of the `"up"`. 
 
 ![alt text](public/storage/images/renametable_instance.png)
 
 ### DROP
 The example below is the drop instance which will drop a table that you fill in the `"table" => ""` line.
-- **up**: as you can see in the example below the up is set to `"" => ""` it is because this mode is already knows what to do and it's job is to drop the table that you fill in the `"table"` line.
+- **up**: as you can see in the example below the up is set to `"" => ""` it is because the migrator already knows what to do and it's job is to drop the table that you fill in the `"table"` line.
 - **down**: is the reverse of the `"up"`. In this instance this should be creating the table that we drop beacause once again it's the reverse of the **up**.
 
 ![alt text](public/storage/images/drop_instance.png)
@@ -46,7 +46,7 @@ The example below is the drop instance which will drop a table that you fill in 
 The example below is the change instance which will alter a table that you fill in the `"table" => ""` line.
 - **up**: the changes you want to a table column.
 	- you can add a column and set it's data types
-	- you can change column or its data types
+	- you can change column or change it's data types
 	- you can also drop a column
 - **down**: is the reverse of the `"up"`.
 
@@ -73,14 +73,14 @@ This is where we drop all tables and replace a new one base on our migration and
 - insert the views schema
 
 ### Rollback
-This will rollback 1 step down base on last batch number.
+This will rollback 1 step down base on last batch number. This will use the `"down"` option in your migration file. This is how the rollback button process the migration:
 - ensure database repository exist
 - we get the completed migrations on our database repository base on the last batch number
 - then we build the schema of the completed migrations
 - after that, we remove the migrations from the database repository
 
 ### Make
-This will add a new migration file base on the default migration stub.
+This will add a new migration file base on the default migration stub. Migration stub contains the scaffolding of the migration file.
 ```php
 ${{ varName }} = [
 	"mode" => "",
@@ -94,11 +94,10 @@ ${{ varName }} = [
 	]
 ];
 ```
-- This is where we add a migration file in our local repository `dabase/migrations/`
-- `{{ varName }}` will be automatically replaced by the migration file name you enter in the input befor you click the make button.
-- `dabase/migrations/` the directory which our migration files will be stored.
+- `{{ varName }}` will be automatically replaced by the migration file name you enter in the input before you click the make button.
+- The `dabase/migrations/` is the directory which our migration files will be stored. This is we called our local repository.
 
-the migration file accepts: 
+The migration file accepts: 
 1. **mode**: "NEW", "DROP", "CHANGE", "RENAMETABLE"
 2. **table**: the target table
 3. **primary_key**: the primary key of the table
