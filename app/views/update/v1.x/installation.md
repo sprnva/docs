@@ -3,7 +3,7 @@
 Sprnva is an open-source framework and repository is available at [github/sprnva](https://github.com/sprnva/sprnva). You can see what we sweat behind the scenes in Sprnva through this repository.
 
 ## Requirements
-- **Php** version supported: **PHP >= php5.5** *`(latest version recommended)`*
+- **Php** version supported: **PHP >= php5.6** *`(latest version recommended)`*
 - In order to run sprnva, you need to install **composer**. Composer is used for class autoloading and for future installation of different packages.
 - **apache** and **mysql** server *(we can use xampp, wampServer and etc.)*
 
