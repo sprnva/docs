@@ -23,7 +23,7 @@ If `sprnva/fortify` is not present in your composer.json, maybe your application
         - update version `"sprnva/fortify": "^1.0"` in composer.json
 - to update dependencies open cmd and execute this command: `composer update`
 
-<a name="high-impact" class='pt-5'></a>
+<a name="high-impact" style="padding-top: 30px;">&nbsp;</a>
 ### High Impact Changes
 - needs internet to update
 - refactor some of the old files if present in your current version
@@ -37,7 +37,7 @@ If `sprnva/fortify` is not present in your composer.json, maybe your application
             - then copy all the content of this file: [app/views/layouts/profile.php](https://github.com/sprnva/sprnva/blob/master/app/views/layouts/profile.php)
     - run `composer update` to update your version.
 
-<a name="medium-impact" class='pt-5'></a>
+<a name="medium-impact" style="padding-top: 30px;">&nbsp;</a>
 ### Medium Impact Changes
 - remove the `system/` directory
 - in `index.php` remove the boostrap require line:

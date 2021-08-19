@@ -11,7 +11,7 @@ Released July 30, 2021
 
 ---
 
-<a name="framework" class='pt-5'></a>
+<a name="framework" style="padding-top: 30px;">&nbsp;</a>
 #### sprnva/framework v1.3.16
 changes in core/framework
 - added withCount helper
@@ -20,7 +20,7 @@ changes in core/framework
 - restructure routing [`$router→get()` to `Rout::get()`]
 - refactor route middleware from string to array  `[{action}, 'auth']` to `[{action}, ['auth', 'register']]`
 
-<a name="sprnva" class='pt-5'></a>
+<a name="sprnva" style="padding-top: 30px;">&nbsp;</a>
 #### sprnva/sprnva v1.3.16
 changes in core/app
 - in `/index.php`
@@ -43,7 +43,7 @@ changes in core/app
 		Route::get('/home', ['WelcomeController@home', ['auth']]);
 		```
 
-<a name="fortify" class='pt-5'></a>
+<a name="fortify" style="padding-top: 30px;">&nbsp;</a>
 #### sprnva/fortify v1.0.6
 changes in package
 - restructured routes from the latest released of the framework

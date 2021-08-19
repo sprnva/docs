@@ -51,12 +51,13 @@ use App\Core\Auth;
 			padding: 0px;
 			border-radius: 6px;
 			box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+			background: rgba(37,42,55,var(--tw-bg-opacity))!important;
 		}
 
 		code {
-			color: rgb(20, 166, 35);
+			color: #0c8819;
 			border-radius: 6px;
-			background-color: rgb(110 118 129 / 21%);
+			background-color: #6e768154;
 			padding: 2px 4px;
 		}
 
@@ -126,13 +127,22 @@ use App\Core\Auth;
 		}
 
 		.dark-mode .hljs {
-			background: rgba(45, 50, 62, 0.79) !important;
+			background: #2d323e6b !important;
+			/*color: #3c3c3c;*/
 			color: #e3dede;
 		}
 
-		/*.dark-mode .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-		    color: #FFF;
-		}*/
+		.hljs-deletion, .hljs-number, .hljs-quote, .hljs-selector-class, .hljs-selector-id, .hljs-string, .hljs-template-tag, .hljs-type {
+		    color: #0c8819 !important;
+		}
+
+		.hljs-tag .hljs-attr, .hljs-tag .hljs-name {
+		    color: #929292;
+		}
+
+		.hljs-punctuation, .hljs-tag {
+		    color: #888;
+		}
 	</style>
 
 	<!-- jQuery -->
@@ -149,8 +159,15 @@ use App\Core\Auth;
 
 	<script>
 		const base_url = "<?= App::get('base_url') ?>";
-		const session_dm = window.sessionStorage.getItem('dark-mode');
+		const session_dm = localStorage.getItem('dark-mode');
 		
+
+	    $(document).ready(function() {
+	        var version_selected = "<?= $_SESSION['VERSION'] ?>";
+	        if (version_selected == "") {
+	            changeVersion();
+	        }
+	    });
 
 		function changeVersion() {
 			var selectedVersion = $("#selected-version").val();
@@ -165,6 +182,16 @@ use App\Core\Auth;
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+
+	<script type="text/javascript">	
+    	const element_bdy = document.body;
+        if(session_dm == 1){
+            element_bdy.classList.add("dark-mode");
+        }else{
+            element_bdy.classList.remove("dark-mode");
+        }
+	</script>
+
 	<div class="wrapper">
 
 		<!-- Navbar -->

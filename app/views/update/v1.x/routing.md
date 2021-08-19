@@ -8,7 +8,7 @@
 
 ---
 
-<a name="intro" class='pt-5'></a>
+<a name="intro" style="padding-top: 30px;">&nbsp;</a>
 ## Introduction
 Sprnva has a beautiful routing built in. Route is our traffic control of our application that tells the entire application which page to be loaded when we hit a certain url. 
 
@@ -48,7 +48,7 @@ Route::post('/profile', ['ProfileController@update', ['auth']]);
 ```
 where profile route is protected by middleware auth. It means you cannot access this route directly in the URL without authenticating.
 
-<a name="route-param" class='pt-5'></a>
+<a name="route-param" style="padding-top: 30px;">&nbsp;</a>
 ## Route with parameter
 There's an instance that we need to pass a parameter to our routes. Just remember that inside the braces `{your-desired-name}` you can define your desired name for your id's or parameters.This is how we do it in sprnva.
 ```php
@@ -68,7 +68,7 @@ class UsersController
 }
 ```
 
-<a name="route-multi-param" class='pt-5'></a>
+<a name="route-multi-param" style="padding-top: 30px;">&nbsp;</a>
 ## Route with multiple parameters
 There's an instance that we need to pass a multiple parameter to our route. Just remember that the `{your-desired-name}` is strict and does not allow same `{your-desired-name}` in the defined uri. Then this is how we do it in sprnva.
 ```php
@@ -88,7 +88,7 @@ class UsersController
 }
 ```
 
-<a name="route-closure" class='pt-5'></a>
+<a name="route-closure" style="padding-top: 30px;">&nbsp;</a>
 ## Route with closure
 Sometimes we do not need a controller to display a view we just need to define a callable parameter in our routes.
 ```php
@@ -106,7 +106,7 @@ Route::get('/profile/detail/{id}', function ($id) {
 });
 ```
 
-<a name="group" class='pt-5'></a>
+<a name="group" style="padding-top: 30px;">&nbsp;</a>
 ## Route Grouping
 We sometimes need to group our routes to save extra coding more prefixes and one-by-one tagging out middleware auth. Route groupings is here to save you.
 ```php

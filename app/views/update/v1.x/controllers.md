@@ -6,7 +6,7 @@
 
 ---
 
-<a name="intro" class='pt-5'></a>
+<a name="intro" style="padding-top: 30px;">&nbsp;</a>
 ## Introduction
 Sprnva is a MVC approach so we also have a Controller which all the logics of our page is stored and processed.
 
@@ -35,7 +35,7 @@ This is how you re-initialize class autoloader using composer.
 composer dump-autoload
 ```
 
-<a name="recommended-names" class='pt-5'></a>
+<a name="recommended-names" style="padding-top: 30px;">&nbsp;</a>
 ### Recommended controller Method Name
 <table class="table table-bordered">
     <thead>
@@ -106,6 +106,6 @@ This is how you re-initialize class autoloader using composer.
 composer dump-autoload
 ```
 
-<a name="purpose" class='pt-5'></a>
+<a name="purpose" style="padding-top: 30px;">&nbsp;</a>
 ### Purpose of Controller?
 Controller is the medium where logic, database and view meet.<br> Controller also is the processing area of all the logics to be fetch later in the views.
