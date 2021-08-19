@@ -35,6 +35,32 @@
         // then highlight each
         hljs.highlightElement(el);
     });
+
+    const element_bdy = document.body;
+
+    $(document).ready(function() {
+        var version_selected = "<?= $_SESSION['VERSION'] ?>";
+        if (version_selected == "") {
+            changeVersion();
+        }
+
+        if(session_dm == 1){
+            element_bdy.classList.add("dark-mode");
+        }else{
+            element_bdy.classList.remove("dark-mode");
+        }
+    });
+
+    function darkMood() {
+        
+        if(session_dm == 1){
+            window.sessionStorage.setItem('dark-mode', 0);
+        }else{
+            window.sessionStorage.setItem('dark-mode', 1);
+        }
+
+        element_bdy.classList.toggle("dark-mode");
+    }
 </script>
 </body>
 

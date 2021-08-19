@@ -54,6 +54,7 @@ use App\Core\Auth;
 		}
 
 		code {
+			color: rgb(20, 166, 35);
 			border-radius: 6px;
 			background-color: rgb(110 118 129 / 21%);
 			padding: 2px 4px;
@@ -67,6 +68,71 @@ use App\Core\Auth;
 		.hljs {
 			background: #fbfbfd !important;
 		}
+
+		a {
+			color: #0b8818;
+		}
+
+		a:hover {
+		    color: #0e5115;
+		}
+		
+		.dark-mode a:not(.btn):hover {
+		    color: #0e5115;
+		}
+
+		.dark-mode {
+		  background-color: black;
+		  color: white;
+		}
+
+		.dark-mode .content-wrapper {
+			color: #bbb7b7 !important;
+			background-color: #14151a !important;
+		}
+
+		.dark-mode .navbar-white {
+		    background-color: #222328;
+			color: #fff;
+		}
+
+		.dark-mode .navbar-nav .nav-link  {
+			color: #fff;
+		}
+
+		.dark-mode .navbar-nav .nav-link:hover {
+		    color: rgba(181, 179, 179, 0.7);
+		}
+
+		.dark-mode .navbar-nav .nav-link:focus {
+		    color: rgba(181, 179, 179, 0.7);
+		}
+
+		.dark-mode .main-sidebar {
+			background-color: #202126 !important;
+		}
+
+		.dark-mode .brand-link {
+			background-color: #202126 !important;
+    		border-bottom: 1px solid #242526;
+		}
+
+		.dark-mode .main-footer {
+			background-color: #202126 !important;
+		}
+
+		.dark-mode .main-header {
+			border-bottom: 1px solid #28292f;
+		}
+
+		.dark-mode .hljs {
+			background: rgba(45, 50, 62, 0.79) !important;
+			color: #e3dede;
+		}
+
+		/*.dark-mode .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+		    color: #FFF;
+		}*/
 	</style>
 
 	<!-- jQuery -->
@@ -83,13 +149,8 @@ use App\Core\Auth;
 
 	<script>
 		const base_url = "<?= App::get('base_url') ?>";
-
-		$(document).ready(function() {
-			var version_selected = "<?= $_SESSION['VERSION'] ?>";
-			if (version_selected == "") {
-				changeVersion();
-			}
-		});
+		const session_dm = window.sessionStorage.getItem('dark-mode');
+		
 
 		function changeVersion() {
 			var selectedVersion = $("#selected-version").val();
@@ -131,6 +192,11 @@ use App\Core\Auth;
 				<li class="nav-item">
 					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
 						<i class="fas fa-expand-arrows-alt"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" role="button" onclick="darkMood()">
+						<i class="fas fa-adjust"></i>
 					</a>
 				</li>
 			</ul>

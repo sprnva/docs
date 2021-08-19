@@ -1,10 +1,17 @@
 # What's new?
+
+- [Framework](#framework)
+- [Sprnva File](#sprnva)
+- [Fortify](#fortify)
+
 Sprnva and its other first-party packages follow Semantic Versioning. No particular date when releasing Major updates to the framework, while minor and patch releases may be released as often as every week. Minor and patch releases should never contain breaking changes.
 
 ### Release v1.x
 Released July 30, 2021
 
 ---
+
+<a name="framework" class='pt-5'></a>
 #### sprnva/framework v1.3.16
 changes in core/framework
 - added withCount helper
@@ -13,6 +20,7 @@ changes in core/framework
 - restructure routing [`$router→get()` to `Rout::get()`]
 - refactor route middleware from string to array  `[{action}, 'auth']` to `[{action}, ['auth', 'register']]`
 
+<a name="sprnva" class='pt-5'></a>
 #### sprnva/sprnva v1.3.16
 changes in core/app
 - in `/index.php`
@@ -35,6 +43,7 @@ changes in core/app
 		Route::get('/home', ['WelcomeController@home', ['auth']]);
 		```
 
+<a name="fortify" class='pt-5'></a>
 #### sprnva/fortify v1.0.6
 changes in package
 - restructured routes from the latest released of the framework

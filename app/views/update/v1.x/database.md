@@ -1,26 +1,35 @@
 # Database
+
+- [Introduction](#intro)
+- [How to use this database querybuilder?](#usage)
+
 ---
+<a name="intro" class='pt-5'></a>
+## Introduction 
 Sprnva has a query builder that is flexible and easy enough to use.
 Sprnva database connection uses PDO and you don't have to do anything.
 
 The database connection and querybuilder instance is accessible using the `DB()` helper.
 
 Sprnva query builder has:
-- select
-- selectLoop
-- insert
-- update
-- delete
-- query
-- seeder
-- with
-- andFilter
-- withCount
-- get
 
+- [select](#select)
+- [selectLoop](#selectLoop)
+- [insert](#insert)
+- [update](#update)
+- [delete](#delete)
+- [query](#query)
+- [seeder](#seeder)
+- [with](#with)
+- [andFilter](#andFilter)
+- [withCount](#withCount)
+- [get](#get)
+
+<a name="usage" class='pt-5'></a>
 ## How to use this database querybuilder? 
 Declare the querybuilder and connection instance first then the method.
 
+<a name="select" class='pt-5'></a>
 ## select
 select is for retrieving a single row in the table.
 
@@ -43,6 +52,7 @@ class UserController
 ```
 The `get` method return the result of the query where each result is an array. You may access each column's value by accessing the column like this `$user_data['fullname']`.
 
+<a name="selectLoop" class='pt-5'></a>
 ## selectLoop
 selectLoop is for retrieving many rows from the table.
 
@@ -70,6 +80,7 @@ foreach($user_data as $users){
 }
 ```
 
+<a name="insert" class='pt-5'></a>
 ## insert
 This is for the inserting a row in the table. Where`$form_data` is array `[ "table-column" => "value" ]`. The last parameter is optional only, default value is `"N"` means nothing to fetch and if it is set to `"Y"` the method will return the `lastInsertId`.
 ```php
@@ -96,6 +107,7 @@ Take note that the `email` and `fullname` is the column name in your selected ta
 
 Always remember that the `insert` method return a integer result, if the result is `1` it is true then `0` is false. False if the query produce an error and true if the query is successfully executed against the database.
 
+<a name="update" class='pt-5'></a>
 ## update
 This is for the updating a row in the table. Where `$form_data` is array `[ "table column" => "value" ]`. The `$whereParams` is optional only.
 ```php
@@ -122,6 +134,7 @@ Take note that the `email` and `fullname` is the column name in your selected ta
 
 Always remember that the `update` method return a integer result, if the result is `1` it is true then `0` is false. False if the query produce an error and true if the query is successfully executed against the database.
 
+<a name="delete" class='pt-5'></a>
 ## delete
 This is for the deleting a row in the table. The `$whereParams` is optional only.
 ```php
@@ -142,6 +155,7 @@ class UserController
 ```
 Always remember that the `delete` method return a integer result, if the result is `1` it is true then `0` is false. False if the query produce an error and true if the query is successfully executed against the database.
 
+<a name="query" class='pt-5'></a>
 ## query
 This is for making a raw query against the database. The `$query` is the statement you need to execute. The `$fetch` parameter is optional only, if you want to retrieve the result of the statement just change the `$fetch = "Y"`.
 
@@ -186,6 +200,7 @@ class UserController
 }
 ```
 
+<a name="seeder" class='pt-5'></a>
 ## seeder
 Insert multiple data against the database or seed data to the database with a selected table and set the number of iterations and column values using the seeder method.
 ```php
@@ -210,15 +225,16 @@ Route::get('/seed', function () {
 ```
 this will seed datas to the selected table which is `customers` with the number of `1000` iterations and a column names with values to seed from the `$tableColumns`.
 
+<a name="with" class='pt-5'></a>
 ## with
 Sometimes we forgot the n+1 problem in developing and fetching datas in our application. This problem can cause tremendous amount of speed/memory consumption and creates a low performance application. Sprnva solve this problem using `with` method.
 
-When using the `with` method this will add all the data of the foreign key to the result of the selected table.
+When using the `with` method this will add all the data of the foreign key to the result of the selected table.
 
-Using this method is like saying as:  `"get this selected table "with" all the data of it's selected foreign key"`
+Using this method is like saying as:  `"get this selected table "with" all the data of it's selected foreign key"`
 ```php
 with([
-    'relational-table' => [
+    'relational-table' => [
         'foreign-key-in-the-selected-table',
         'primary-key-column-of-the-relational-table'
     ]
@@ -301,14 +317,16 @@ Behind the scenes, first the `with()` method will get all the selected table dat
 
 This also applies and tested on `select()` method same process same logic and the result is the same.
 
-This way we avoid the querying data to our database inside our loop and makes our query repeats until the end of the iteration. Put in mind that if you have a 100,000 items in our table and we iterate all of it then we query inside the loop to get the foreign key data, imagine the pain that our server gets. Cheer up! sprnva got this under the hood.
+This way we avoid the querying data to our database inside our loop and makes our query repeats until the end of the iteration. Put in mind that if you have a 100,000 items in our table and we iterate all of it then we query inside the loop to get the foreign key data, 
+imagine the pain that our server gets. Cheer up! sprnva got this under the hood.
 
+<a name="andFilter" class='pt-5'></a>
 ## andFilter
 An additional `where` parameter to the `with()` method. Placement of this method is before the `->with()` method.
 
 ```php
 andFilter([
-    'relational-table' => "additonal-where-parameters"
+    'relational-table' => "additonal-where-parameters"
 ])
 
 // using the andFilter to filter the relational-table "tbl_task"
@@ -332,15 +350,16 @@ Route::get('/get-user-task', function () {
 ```
 ![alt text](public/storage/images/andFilter-method.png)
 
+<a name="withCount" class='pt-5'></a>
 ## withCount
 Sometimes we forgot the n+1 problem in developing and fetching datas in our application. This problem can cause tremendous amount of speed/memory consumption and creates a low performance application. Sprnva solve this problem using `withCount` method.
 
-When using the `withCount` method this will count the total number of rows of the foreign table to the result set of the selected table.
+When using the `withCount` method this will count the total number of rows of the foreign table to the result set of the selected table.
 
-Using this method is like saying as:  `get this selected table "withCount" all the rows of it's selected foreign key`
+Using this method is like saying as:  `get this selected table "withCount" all the rows of it's selected foreign key`
 ```php
 withCount([
-    'relational-table' => [
+    'relational-table' => [
         'foreign-id-in-the-selected-table',
         'primary-key-column-of-the-relational-table'
     ]
@@ -362,6 +381,7 @@ Take note that when retrieving the count of the realtional-table which is `proje
 
 ![alt text](public/storage/images/withCount-method.png)
 
+<a name="get" class='pt-5'></a>
 ## get
 This will literaly get the result of our query and this will end the chain of: 
 - **select()**->get();

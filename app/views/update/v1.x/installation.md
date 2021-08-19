@@ -1,12 +1,20 @@
 # Installation
+
+- [Requirements](#requirements)
+    - [Installing composer](#install-composer)
+- [Install Sprnva Using Composer](#install-sprnva)
+- [The Config](#config)
+
 ---
 Sprnva is an open-source framework and repository is available at [github/sprnva](https://github.com/sprnva/sprnva). You can see what we sweat behind the scenes in Sprnva through this repository.
 
+<a name="requirements" class='pt-5'></a>
 ## Requirements
 - **Php** version supported: **PHP >= php5.6** *`(latest version recommended)`*
 - In order to run sprnva, you need to install **composer**. Composer is used for class autoloading and for future installation of different packages.
 - **apache** and **mysql** server *(we can use xampp, wampServer and etc.)*
 
+<a name="install-composer" class='pt-5'></a>
 ## Installing composer
 <span style="color: red;">*(if not yet installed in your machine)*</span>
 
@@ -25,6 +33,7 @@ Sprnva is an open-source framework and repository is available at [github/sprnva
         sudo mv composer.phar /usr/local/bin/composer
         ```
 
+<a name="install-sprnva" class='pt-5'></a>
 ## Install Sprnva Using Composer
 If your computer already has PHP and Composer installed, you may create a new Sprnva project by using Composer directly :
 ```bash
@@ -49,7 +58,8 @@ cd example-app
     ```
 - finally, you can now build your desired application using sprnva.
 
-## Config
+<a name="config" class='pt-5'></a>
+## The Config
 In order to protect your sensitive credentials, we ignore `config.php` to be committed in the source control. After installation via composer, fill in your desired credentials and know more of it below.
 
 ![alt text](public/storage/images/update-config.png)

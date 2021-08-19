@@ -1,5 +1,13 @@
 # Controllers
+
+- [Introduction](#intro)
+- [Recommended controller Method Name](#recommended-names)
+- [Purpose of Controller?](#purpose)
+
 ---
+
+<a name="intro" class='pt-5'></a>
+## Introduction
 Sprnva is a MVC approach so we also have a Controller which all the logics of our page is stored and processed.
 
 You will find the controller at `app/controllers`. Then this is how you declare a basic controller.
@@ -27,6 +35,7 @@ This is how you re-initialize class autoloader using composer.
 composer dump-autoload
 ```
 
+<a name="recommended-names" class='pt-5'></a>
 ### Recommended controller Method Name
 <table class="table table-bordered">
     <thead>
@@ -97,5 +106,6 @@ This is how you re-initialize class autoloader using composer.
 composer dump-autoload
 ```
 
+<a name="purpose" class='pt-5'></a>
 ### Purpose of Controller?
 Controller is the medium where logic, database and view meet.<br> Controller also is the processing area of all the logics to be fetch later in the views.
