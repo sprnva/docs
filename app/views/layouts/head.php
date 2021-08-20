@@ -133,8 +133,16 @@ use App\Core\Auth;
 		}
 
 		.dark-mode .hljs-section, .dark-mode .hljs-title {
-		    color: #a6a3a3;
+		    color: #ca473f;
 		    font-weight: 400;
+		}
+
+		.dark-mode .scroll-to-top-dash {
+			border-top: 3px solid #fff;
+		}
+
+		.dark-mode .scroll-to-top-text {
+			color: #fff;
 		}
 
 		.hljs-deletion, .hljs-number, .hljs-quote, .hljs-selector-class, .hljs-selector-id, .hljs-string, .hljs-template-tag, .hljs-type {
@@ -155,12 +163,54 @@ use App\Core\Auth;
 		}
 
 		.hljs-section, .hljs-title {
-		    color: #484545;
+		    color: #ca473f;
 		    font-weight: 400;
+		}
+
+		.hljs-link, .hljs-operator, .hljs-regexp, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-symbol, .hljs-template-variable, .hljs-variable {
+		    color: #3f97b9;
 		}
 
 		hr {
 		    border-top: 1px solid rgba(119, 119, 119, 0.44);
+		}
+
+
+		.scroll-to-top {
+		    font-size: .875rem;
+		    right: 3.125rem;
+		    bottom: 1.875rem;
+		}
+
+		.scroll-to-top {
+		    position: fixed;
+		    -webkit-transform: rotate(90deg);
+		    transform: rotate(90deg);
+		    -webkit-transform-origin: right;
+		    transform-origin: right;
+		    display: inline-flex;
+		    right: 1.875rem;
+		    bottom: 1.25rem;
+		    color: #fff;
+		    font-family: filson-soft,sans-serif;
+		    font-size: .75rem;
+		    z-index: 2;
+		}
+
+		.scroll-to-top {
+		    font-size: .875rem;
+		    color: #fff;
+			font-family: filson-soft,sans-serif;
+		}
+
+		.scroll-to-top-dash {
+			padding: 0px;
+			margin: 0px;
+			border-top: 3px solid #484545;
+		}
+
+		.scroll-to-top-text {
+			color: #484545;
 		}
 	</style>
 

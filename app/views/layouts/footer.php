@@ -1,3 +1,13 @@
+
+<div style="position: fixed;">
+    <a href="#" class="scroll-to-top" data-title="Click here to go to link" data-ct-action="anchorLink" style="position: fixed;margin-right: 25px;">
+        <span style="width: 30px;padding: 8px 0px 8px 0px;margin-right: 10px;">
+            <hr class="scroll-to-top-dash">&nbsp;
+        </span>
+        <span class="scroll-to-top-text">Scroll</span>
+    </a>
+</div>
+
 </div>
 </div>
 </div>
