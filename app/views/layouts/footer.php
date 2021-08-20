@@ -19,7 +19,7 @@
     <div class="float-right d-none d-sm-inline">
     </div>
     <!-- Default to the left -->
-    <strong>&copy; 2021-<?= date('Y'); ?> <a href="https://github.com/sprnva/sprnva">Sprnva</a>.</strong> All rights reserved
+    <strong>&copy; 2021-<?= date('Y'); ?> <a href="https://sprnva.space">Sprnva</a>.</strong> All rights reserved
 </footer>
 </div>
 

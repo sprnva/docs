@@ -129,7 +129,12 @@ use App\Core\Auth;
 		.dark-mode .hljs {
 			background: #2d323e6b !important;
 			/*color: #3c3c3c;*/
-			color: #e3dede;
+			color: #a6a3a3;
+		}
+
+		.dark-mode .hljs-section, .dark-mode .hljs-title {
+		    color: #a6a3a3;
+		    font-weight: 400;
 		}
 
 		.hljs-deletion, .hljs-number, .hljs-quote, .hljs-selector-class, .hljs-selector-id, .hljs-string, .hljs-template-tag, .hljs-type {
@@ -142,6 +147,20 @@ use App\Core\Auth;
 
 		.hljs-punctuation, .hljs-tag {
 		    color: #888;
+		}
+
+		.hljs-attribute, .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-name, .hljs-selector-tag {
+		    font-weight: inherit;
+		    color: #1f7199;
+		}
+
+		.hljs-section, .hljs-title {
+		    color: #484545;
+		    font-weight: 400;
+		}
+
+		hr {
+		    border-top: 1px solid rgba(119, 119, 119, 0.44);
 		}
 	</style>
 

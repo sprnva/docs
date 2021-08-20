@@ -1,5 +1,12 @@
 # Views
+
+- [Introduction](#intro)
+- [Passing parameters](#passing-params)
+
 ---
+
+<a name="intro" style="padding-top: 30px;">&nbsp;</a>
+### Introduction
 Sprnva is a MVC approach so we also have a Views where the beautiful stacks of graphical illustration is processed.
 
 You will find the views at `app/views`. Views in sprnva have a naming convention, we added a `.view.php` in order for you to declare a more beautiful parameter using the `view()` helper. Example: `login.view.php`
@@ -18,6 +25,7 @@ class UsersController
 }
 ```
 
+<a name="passing-params" style="padding-top: 30px;">&nbsp;</a>
 ### Passing parameters
 We can pass a parameter to our views from controller using `view()` helper. This helper accepts 2 parameters like this:
 ```php
