@@ -55,6 +55,8 @@ cd example-app
     - then add the authentication called fortify via composer :
     ```bash
     composer require sprnva/fortify
+
+    php fortify
     ```
 - finally, you can now build your desired application using sprnva.
 

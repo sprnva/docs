@@ -19,8 +19,10 @@ If `sprnva/fortify` is not present in your composer.json, maybe your application
 - if your application is not using login and registration skip this steps:
     - if your application is using login and registration but not the sprnva fortify: *`NOTE: only use fortify if you want to use it otherwise you are free to make your own login ang registration system.`*
         - run `composer require sprnva/fortify`
+        - run `php fortify` in your terminal
     - if your application is already using `sprnva/fortify`:
         - update version `"sprnva/fortify": "^1.0"` in composer.json
+        - and run `php fortify` in your terminal
 - to update dependencies open cmd and execute this command: `composer update`
 
 <a name="high-impact" style="padding-top: 30px;">&nbsp;</a>
