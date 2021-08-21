@@ -1,5 +1,8 @@
 # Upgrade Guide
 
+- [Fortify](#fortify)
+    - [Install Fortify](#install)
+    - [Upgrade Fortify](#upgrade)
 - [High Impact Changes](#high-impact)
 - [Medium Impact Changes](#medium-impact)
 
@@ -7,37 +10,58 @@
 ---
 Updating Dependencies via Composer
 - First we need to update the `composer.json` file
-    ```json
-    "require": {
-        "sprnva/fortify": "^1.0",
-        "sprnva/framework": "^1.3"
-    }
-    ```
+```json
+"require": {
+    "sprnva/fortify": "^1.0",
+    "sprnva/framework": "^1.3"
+}
+```
+- please check the Fortify if you want to `Install Fortify` and use it to create a login and registration for your application or if you had an existing fortify install and want to upgrade it to the latest version refer to the `Upgrade Fortify` below.
+- after you check or update the require option you have to run this command in your terminal :
+```bash
+composer update
+```
 
-If `sprnva/fortify` is not present in your composer.json, maybe your application is not using login and registration or your application is not yet using the sprnva fortify package.
+<a name="fortify" style="padding-top: 30px;">&nbsp;</a>
+## Fortify
+If `sprnva/fortify` is not present in the require option in your `composer.json` file, then it's okay don't worry maybe your application is not using authentication system or login and registration system.
 
-- if your application is not using login and registration skip this steps:
-    - if your application is using login and registration but not the sprnva fortify: *`NOTE: only use fortify if you want to use it otherwise you are free to make your own login ang registration system.`*
-        - run `composer require sprnva/fortify`
-        - run `php fortify` in your terminal
-    - if your application is already using `sprnva/fortify`:
-        - update version `"sprnva/fortify": "^1.0"` in composer.json
-        - and run `php fortify` in your terminal
-- to update dependencies open cmd and execute this command: `composer update`
+Fortify is the authentication scaffolding for your application. It contains login, registration, password-reset and profile out of the box. All the files can be customize depending on your need.
+
+`NOTE: only use fortify if you want to use it otherwise you are free to make your own login ang registration system.`
+
+<a name="install" style="padding-top: 30px;">&nbsp;</a>
+#### Install Fortify
+If you want to use `Fortify` to create an authentication scaffolding for your application do this step on your terminal:
+
+```bash
+composer require sprnva/fortify
+
+php fortify
+```
+
+- all authentication files are customizable and can be view in this directories:
+    - Controllers : `app/controllers/Auth/`
+    - Views : `app/views/auth/`
+    - Route : `config/routes/auth.php`
+
+<a name="upgrade" style="padding-top: 30px;">&nbsp;</a>
+#### Upgrade Fortify
+If you already had fortify in your application and you want to upgrade them to the lates `1.x` version then do this step:
+    - check `compose.json` if fortify is present in the require option
+        - if fortify is not present, install fortify.
+        - if fortify is present in the require option, check the version and then we can now update fortify on your terminal using:
+
+        ```bash
+        composer update
+
+        php fortify
+        ```
+        - if `app/views/layouts/profile.php` exist then delete this file because we are no longer requiring this file when using our fortify scaffold.
 
 <a name="high-impact" style="padding-top: 30px;">&nbsp;</a>
 ### High Impact Changes
 - needs internet to update
-- refactor some of the old files if present in your current version
-    - remove `auth` directory in :
-        - app/controllers/Auth/
-        - app/views/auth/
-        - config/routes/auth.php
-    - check if `app/views/layouts/profile.php` is present.
-        - if not present:
-            - create a file `app/views/layouts/profile.php`
-            - then copy all the content of this file: [app/views/layouts/profile.php](https://github.com/sprnva/sprnva/blob/master/app/views/layouts/profile.php)
-    - run `composer update` to update your version.
 
 <a name="medium-impact" style="padding-top: 30px;">&nbsp;</a>
 ### Medium Impact Changes

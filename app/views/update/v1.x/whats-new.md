@@ -46,4 +46,27 @@ changes in core/app
 <a name="fortify" style="padding-top: 30px;">&nbsp;</a>
 #### sprnva/fortify v1.0.6
 changes in package
-- restructured routes from the latest released of the framework
+- restructured fortify to be more dynamic and customizable
+- all authentication files are customizable and can be view in this directories:
+	- Controllers : `app/controllers/Auth/`
+	- Views : `app/views/auth/`
+	- Route : `config/routes/auth.php`
+
+To install fortify do this steps:
+
+```bash
+composer require sprnva/fortify
+
+php fortify
+```
+
+To update existing fortify do this steps:
+
+- check `compose.json` if fortify is present in the require option
+	- if fortify is not present, install fortify.
+	- if fortify is present in the require option, check the version and then we now update fortify using:
+
+	```bash
+	composer update
+	```
+	- delete the `app/views/layouts/profile.php` because we are no longer requiring this file using our fortify.
