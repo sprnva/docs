@@ -37,7 +37,7 @@ If you want to use `Fortify` to create an authentication scaffolding for your ap
 ```bash
 composer require sprnva/fortify
 
-php fortify
+php vendor/sprnva/fortify/serve
 ```
 
 - all authentication files are customizable and can be view in this directories:
@@ -55,7 +55,7 @@ If you already had fortify in your application and you want to upgrade them to t
         ```bash
         composer update
 
-        php fortify
+        php vendor/sprnva/fortify/serve
         ```
         - if `app/views/layouts/profile.php` exist then delete this file because we are no longer requiring this file when using our fortify scaffold.
 

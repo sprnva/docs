@@ -56,7 +56,7 @@ cd example-app
     ```bash
     composer require sprnva/fortify
 
-    php fortify
+    php vendor/sprnva/fortify/serve
     ```
 - finally, you can now build your desired application using sprnva.
 

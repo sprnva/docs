@@ -57,7 +57,7 @@ To install fortify do this steps:
 ```bash
 composer require sprnva/fortify
 
-php fortify
+php vendor/sprnva/fortify/serve
 ```
 
 To update existing fortify do this steps:

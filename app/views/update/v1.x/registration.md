@@ -4,7 +4,7 @@ Add a login and registration to your Sprnva application using the authentication
 ```bash
 composer require sprnva/fortify
 
-php fortify
+php vendor/sprnva/fortify/serve
 ```
 And it will add login and registration to your application in the backend.
 
