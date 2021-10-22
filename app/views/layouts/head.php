@@ -51,7 +51,7 @@ use App\Core\Auth;
 			padding: 0px;
 			border-radius: 6px;
 			box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
-			background: rgba(37,42,55,var(--tw-bg-opacity))!important;
+			background: rgba(37, 42, 55, var(--tw-bg-opacity)) !important;
 		}
 
 		code {
@@ -75,16 +75,16 @@ use App\Core\Auth;
 		}
 
 		a:hover {
-		    color: #0e5115;
+			color: #0e5115;
 		}
-		
+
 		.dark-mode a:not(.btn):hover {
-		    color: #0e5115;
+			color: #0e5115;
 		}
 
 		.dark-mode {
-		  background-color: black;
-		  color: white;
+			background-color: black;
+			color: white;
 		}
 
 		.dark-mode .content-wrapper {
@@ -93,20 +93,20 @@ use App\Core\Auth;
 		}
 
 		.dark-mode .navbar-white {
-		    background-color: #222328;
+			background-color: #222328;
 			color: #fff;
 		}
 
-		.dark-mode .navbar-nav .nav-link  {
+		.dark-mode .navbar-nav .nav-link {
 			color: #fff;
 		}
 
 		.dark-mode .navbar-nav .nav-link:hover {
-		    color: rgba(181, 179, 179, 0.7);
+			color: rgba(181, 179, 179, 0.7);
 		}
 
 		.dark-mode .navbar-nav .nav-link:focus {
-		    color: rgba(181, 179, 179, 0.7);
+			color: rgba(181, 179, 179, 0.7);
 		}
 
 		.dark-mode .main-sidebar {
@@ -115,7 +115,7 @@ use App\Core\Auth;
 
 		.dark-mode .brand-link {
 			background-color: #202126 !important;
-    		border-bottom: 1px solid #242526;
+			border-bottom: 1px solid #242526;
 		}
 
 		.dark-mode .main-footer {
@@ -132,9 +132,10 @@ use App\Core\Auth;
 			color: #a6a3a3;
 		}
 
-		.dark-mode .hljs-section, .dark-mode .hljs-title {
-		    color: #ca473f;
-		    font-weight: 400;
+		.dark-mode .hljs-section,
+		.dark-mode .hljs-title {
+			color: #ca473f;
+			font-weight: 400;
 		}
 
 		.dark-mode .scroll-to-top-dash {
@@ -145,62 +146,84 @@ use App\Core\Auth;
 			color: #fff;
 		}
 
-		.hljs-deletion, .hljs-number, .hljs-quote, .hljs-selector-class, .hljs-selector-id, .hljs-string, .hljs-template-tag, .hljs-type {
-		    color: #0c8819 !important;
+		.hljs-deletion,
+		.hljs-number,
+		.hljs-quote,
+		.hljs-selector-class,
+		.hljs-selector-id,
+		.hljs-string,
+		.hljs-template-tag,
+		.hljs-type {
+			color: #0c8819 !important;
 		}
 
-		.hljs-tag .hljs-attr, .hljs-tag .hljs-name {
-		    color: #929292;
+		.hljs-tag .hljs-attr,
+		.hljs-tag .hljs-name {
+			color: #929292;
 		}
 
-		.hljs-punctuation, .hljs-tag {
-		    color: #888;
+		.hljs-punctuation,
+		.hljs-tag {
+			color: #888;
 		}
 
-		.hljs-attribute, .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-name, .hljs-selector-tag {
-		    font-weight: inherit;
-		    color: #1f7199;
+		.hljs-attribute,
+		.hljs-doctag,
+		.hljs-keyword,
+		.hljs-meta .hljs-keyword,
+		.hljs-name,
+		.hljs-selector-tag {
+			font-weight: inherit;
+			color: #1f7199;
 		}
 
-		.hljs-section, .hljs-title {
-		    color: #ca473f;
-		    font-weight: 400;
+		.hljs-section,
+		.hljs-title {
+			color: #ca473f;
+			font-weight: 400;
 		}
 
-		.hljs-link, .hljs-operator, .hljs-regexp, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-symbol, .hljs-template-variable, .hljs-variable {
-		    color: #3f97b9;
+		.hljs-link,
+		.hljs-operator,
+		.hljs-regexp,
+		.hljs-selector-attr,
+		.hljs-selector-pseudo,
+		.hljs-symbol,
+		.hljs-template-variable,
+		.hljs-variable {
+			color: #3f97b9;
 		}
 
 		hr {
-		    border-top: 1px solid rgba(119, 119, 119, 0.44);
+			border-top: 1px solid rgba(119, 119, 119, 0.44);
 		}
 
 
 		.scroll-to-top {
-		    font-size: .875rem;
-		    right: 3.125rem;
-		    bottom: 1.875rem;
+			font-size: .875rem;
+			right: 3.125rem;
+			bottom: 1.875rem;
 		}
 
 		.scroll-to-top {
-		    position: fixed;
-		    -webkit-transform: rotate(90deg);
-		    transform: rotate(90deg);
-		    -webkit-transform-origin: right;
-		    transform-origin: right;
-		    display: inline-flex;
-		    right: 1.875rem;
-		    bottom: 1.25rem;
-		    color: #fff;
-		    font-family: filson-soft,sans-serif;
-		    font-size: .75rem;
-		    z-index: 2;
+			position: fixed;
+			-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+			-webkit-transform-origin: right;
+			transform-origin: right;
+			display: inline-flex;
+			right: 1.875rem;
+			bottom: 1.25rem;
+			color: #fff;
+			font-family: filson-soft, sans-serif;
+			font-size: .75rem;
+			z-index: 2;
 		}
 
 		.scroll-to-top {
-		    font-size: .875rem;
-		    color: #fff;
-			font-family: filson-soft,sans-serif;
+			font-size: .875rem;
+			color: #fff;
+			font-family: filson-soft, sans-serif;
 		}
 
 		.scroll-to-top-dash {
@@ -229,18 +252,10 @@ use App\Core\Auth;
 	<script>
 		const base_url = "<?= App::get('base_url') ?>";
 		const session_dm = localStorage.getItem('dark-mode');
-		
-
-	    $(document).ready(function() {
-	        var version_selected = "<?= $_SESSION['VERSION'] ?>";
-	        if (version_selected == "") {
-	            changeVersion();
-	        }
-	    });
 
 		function changeVersion() {
 			var selectedVersion = $("#selected-version").val();
-			$.post("change-version", {
+			$.post(base_url + "/change-version", {
 				selectedVersion: selectedVersion
 			}, function(data) {
 				location.reload();
@@ -252,13 +267,13 @@ use App\Core\Auth;
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
 
-	<script type="text/javascript">	
-    	const element_bdy = document.body;
-        if(session_dm == 1){
-            element_bdy.classList.add("dark-mode");
-        }else{
-            element_bdy.classList.remove("dark-mode");
-        }
+	<script type="text/javascript">
+		const element_bdy = document.body;
+		if (session_dm == 1) {
+			element_bdy.classList.add("dark-mode");
+		} else {
+			element_bdy.classList.remove("dark-mode");
+		}
 	</script>
 
 	<div class="wrapper">

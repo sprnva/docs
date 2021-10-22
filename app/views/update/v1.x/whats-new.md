@@ -12,61 +12,29 @@ Released July 30, 2021
 ---
 
 <a name="framework" style="padding-top: 30px;">&nbsp;</a>
-#### sprnva/framework v1.3.16
+#### sprnva/framework v1.3.28
 changes in core/framework
-- added withCount helper
-- dd now supports objects
-- added new validation [`unique:{table}`]
-- restructure routing [`$router→get()` to `Rout::get()`]
-- refactor route middleware from string to array  `[{action}, 'auth']` to `[{action}, ['auth', 'register']]`
+- fix error page UI bugs
+- added new validation ['`numeric`']
+- rework validation response
+- you can now pass validation response to json and return it to ajax call
 
 <a name="sprnva" style="padding-top: 30px;">&nbsp;</a>
-#### sprnva/sprnva v1.3.16
+#### sprnva/sprnva v1.5.24
 changes in core/app
-- in `/index.php`
-	- refactor `use App\Core\Router;` to: `use App\Core\Routing\Route;`
-	- refactor `Router::load()` to:
-		```php
-		Route::register(
-			// request uri
-			Request::uri(),
-			// the method use of the uri
-			Request::method()
-		);
-		```
-
-- in `config/routes/web.php`
-	- below <?php add this: `use App\Core\Routing\Route;`
-	- refactor `$router->` to: `Route::`
-	- and when using auth middleware should be like this:
-		```php
-		Route::get('/home', ['WelcomeController@home', ['auth']]);
-		```
+- remove `layouts/profile.php` not used anymore because of fortify
 
 <a name="fortify" style="padding-top: 30px;">&nbsp;</a>
-#### sprnva/fortify v1.0.6
+#### sprnva/fortify v1.0.15
 changes in package
-- restructured fortify to be more dynamic and customizable
-- all authentication files are customizable and can be view in this directories:
-	- Controllers : `app/controllers/Auth/`
-	- Views : `app/views/auth/`
-	- Route : `config/routes/auth.php`
+- customizable authentication
+- updated /auth files
+- one time fortified
 
-To install fortify do this steps:
+If you haven't ever try fortify, this is how to install fortify. Do this steps:
 
 ```bash
 composer require sprnva/fortify
 
 php vendor/sprnva/fortify/serve
 ```
-
-To update existing fortify do this steps:
-
-- check `compose.json` if fortify is present in the require option
-	- if fortify is not present, install fortify.
-	- if fortify is present in the require option, check the version and then we now update fortify using:
-
-	```bash
-	composer update
-	```
-	- delete the `app/views/layouts/profile.php` because we are no longer requiring this file using our fortify.

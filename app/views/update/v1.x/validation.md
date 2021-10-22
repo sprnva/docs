@@ -80,6 +80,65 @@ class RegisterController
 
 ```
 
+The `Request::validate()` response is optional. For example if you put a route parameter in the method, it will redirect to the route given with the error messages that validator collects. The other option is, if you are using an ajax call to direct request to the controller, you can leave the route paramerter to an empty `''` string.
+```php
+
+// if route parameter contains a value
+Request::validate('/register', [
+    'email' => ['required', 'email'],
+    'username' => ['required', 'unique:users'],
+    'password' => ['required'],
+]);
+
+// if route parameter has no value
+Request::validate('', [
+    'email' => ['required', 'email'],
+    'username' => ['required', 'unique:users'],
+    'password' => ['required'],
+]);
+
+```
+
+If you use the empty route parameter, this will now redirected to any routes instead it returns a `validationError` index with all the errors that the validator collects. This option is best for ajax calls because you can convert `validationError` to json and return it back to the ajax and you can now do what ever you want to do with the data.
+
+```php
+use App\Core\Auth;
+use App\Core\Request;
+
+class ProfileController
+{
+    public function update()
+    {
+        // the route parameter which is the first parameter
+        // is an empty string. This is an example of dealing
+        // with ajax request.
+        $request = Request::validate('', [
+            'email' => ['required', 'email'],
+            'name' => ['required']
+        ]);
+
+        // we check if the validationError is empty
+        if (empty($request['validationError'])) {
+            $user_id = Auth::user('id');
+
+            $update_data = [
+                'email' => "$request[email]",
+                'fullname' => "$request[name]"
+            ];
+
+            DB()->update('users', $update_data, "id = '$user_id'");
+
+            // notice the redirect message we remove the status
+            redirect("/profile", ["message" => "Profile information updated."]);
+        }
+
+        // if the validationError if not empty,
+        // now we pass the validationError back to the ajax
+        echo json_encode($request['validationError']);
+    }
+}
+```
+
 <a name="validation-type" style="padding-top: 30px;">&nbsp;</a>
 ### Validation Types
 Validation type is compose of parameters to validate your inputs like:
@@ -88,6 +147,7 @@ Validation type is compose of parameters to validate your inputs like:
 - **max** : this will set a maximun `character/s` length to allow.
 - **email** : this will validate if the input is an email address.
 - **unique:{table}** : this will validate if the input is already exist in a table using the `:{table}` option.
+- **numeric** : this will check if the input is a numeric value.
 
 <a name="unique-db" style="padding-top: 30px;">&nbsp;</a>
 ### unique:table

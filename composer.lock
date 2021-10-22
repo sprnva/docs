@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "sprnva/framework",
-            "version": "v1.3.18",
+            "version": "v1.3.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sprnva/framework.git",
-                "reference": "cf76d2819f8d19b1ee7811bb7b4a411e3d447a14"
+                "reference": "972b32dcb6cf5fcb2ae4c8314d917ac126038c86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sprnva/framework/zipball/cf76d2819f8d19b1ee7811bb7b4a411e3d447a14",
-                "reference": "cf76d2819f8d19b1ee7811bb7b4a411e3d447a14",
+                "url": "https://api.github.com/repos/sprnva/framework/zipball/972b32dcb6cf5fcb2ae4c8314d917ac126038c86",
+                "reference": "972b32dcb6cf5fcb2ae4c8314d917ac126038c86",
                 "shasum": ""
             },
             "type": "library",
@@ -45,9 +45,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sprnva/framework/issues",
-                "source": "https://github.com/sprnva/framework/tree/v1.3.18"
+                "source": "https://github.com/sprnva/framework/tree/v1.3.28"
             },
-            "time": "2021-08-04T15:37:50+00:00"
+            "time": "2021-10-22T01:59:00+00:00"
         }
     ],
     "packages-dev": [],
@@ -58,5 +58,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }

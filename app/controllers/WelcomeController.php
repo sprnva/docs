@@ -10,6 +10,13 @@ class WelcomeController
 
     public function __construct()
     {
+        $updateDirs = array_diff(scandir('app/views/update/'), array('.', '..'));
+        $latestDir = end($updateDirs);
+
+        if (empty($_SESSION['VERSION'])) {
+            $_SESSION['VERSION'] = $latestDir;
+        }
+
         $this->folder = 'app/views/update/' . $_SESSION['VERSION'];
         $this->pd = new Parsedown();
     }
