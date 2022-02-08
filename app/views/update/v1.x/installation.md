@@ -1,7 +1,7 @@
 # Installation
 
 - [Requirements](#requirements)
-    - [Installing composer](#install-composer)
+- [Install Sprnva via zip download](#install-sprnva-zip)
 - [Install Sprnva Using Composer](#install-sprnva)
 - [The Config](#config)
 
@@ -14,33 +14,29 @@ Sprnva is an open-source framework and repository is available at [github/sprnva
 - In order to run sprnva, you need to install **composer**. Composer is used for class autoloading and for future installation of different packages.
 - **apache** and **mysql** server *(we can use xampp, wampServer and etc.)*
 
-<a name="install-composer" style="padding-top: 30px;">&nbsp;</a>
-## Installing composer
-<span style="color: red;">*(if not yet installed in your machine)*</span>
+<a name="install-sprnva-zip" style="padding-top: 30px;">&nbsp;</a>
+### Download Sprnva zip no composer required
+click here to download: [sprnva-no-composer.zip](https://github.com/sprnva/sprnva-no-composer/archive/refs/heads/main.zip)
 
-- **Windows** 
-    - click here: [https://getcomposer.org/Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe)
-- **MacOS** 
-    - copy this to your terminal:
-        ```bash
-        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-        php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-        php composer-setup.php
-        php -r "unlink('composer-setup.php');"
-        ```
-    - after the above command is done, copy and paste this to your terminal to make composer global:
-        ```bash
-        sudo mv composer.phar /usr/local/bin/composer
-        ```
+- setup `config.php` credentials
+- set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
+- Create a database identical to your config then go to  `/migration`module with this URL:
+```
+http://localhost/example-app/migration
+```
+- click fresh button to migrate default tables
+- You can start building your application
 
 <a name="install-sprnva" style="padding-top: 30px;">&nbsp;</a>
 ## Install Sprnva Using Composer
 If your computer already has PHP and Composer installed, you may create a new Sprnva project by using Composer directly :
+
 ```bash
 composer create-project sprnva/sprnva example-app
 
 cd example-app
 ```
+
 - After the application has been created, you may start setting up the config with your credentials.
 - set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
 - <span style="color: red;">**if you don't want to add login and registration to your application**</span>:
@@ -54,9 +50,9 @@ cd example-app
     - when the migration module shows, click the fresh button to migrate the default tables.
     - then add the authentication called fortify via composer :
     ```bash
-    composer require sprnva/fortify
+        composer require sprnva/fortify
 
-    php vendor/sprnva/fortify/serve
+        php vendor/sprnva/fortify/serve
     ```
 - finally, you can now build your desired application using sprnva.
 
