@@ -126,15 +126,14 @@ class ProfileController
                 'fullname' => "$request[name]"
             ];
 
-            DB()->update('users', $update_data, "id = '$user_id'");
+            $response = DB()->update('users', $update_data, "id = '$user_id'");
 
-            // notice the redirect message we remove the status
-            redirect("/profile", ["message" => "Profile information updated."]);
+            echo json_encode($response);
+        }else{
+            // if the validationError if not empty,
+            // now we pass the validationError back to the ajax
+            echo json_encode($request['validationError']);
         }
-
-        // if the validationError if not empty,
-        // now we pass the validationError back to the ajax
-        echo json_encode($request['validationError']);
     }
 }
 ```
