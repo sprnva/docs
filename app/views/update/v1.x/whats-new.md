@@ -1,32 +1,29 @@
 # What's new?
+
 Sprnva and its other first-party packages follow Semantic Versioning. No particular date when releasing Major updates to the framework, while minor and patch releases may be released as often as every week. Minor and patch releases should never contain breaking changes.
----
+- - -
 
-### DOWNLOAD SPRNVA ZIP NO COMPOSER REQUIRED
-click here to download: [sprnva-no-composer.zip](https://github.com/sprnva/sprnva-no-composer/archive/refs/heads/main.zip)
+## v1.3.39
 
-- setup `config.php` credentials
-- set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
-- Create a database identical to your config then go to  `/migration`module with this URL:
-```
-http://localhost/example-app/migration
-```
-- click fresh button to migrate default tables
-- You can start building your application
+- **[FIX]** in prod mode abort page will be fired
+- **[FIX]** dd not showing in devtools preview tab
 
+#### Download sprnva without composer
 
-### INSTALL VIA COMPOSER
-```sh
-composer create-project sprnva/sprnva example-app
+- develop faster without composer
+- just download the zip file and configure your credentials
+- manually adding of classes in the class autoloader
 
-cd example-app
-```
+* * *
 
-- setup `config.php` credentials
-- set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
-- Create a database identical to your config then go to  `/migration`module with this URL:
-```
-http://localhost/example-app/migration
-```
-- click fresh button to migrate default tables
-- You can start building your application
+## v1.3.38
+
+- **[FIX]** no error msg in session if validate method parameter 1 (which is the url) is empty
+
+* * *
+
+## v1.3.37
+
+- **[FIX]** validation unique:{table}
+
+* * *

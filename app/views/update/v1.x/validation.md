@@ -101,6 +101,9 @@ Request::validate('', [
 
 If you use the empty route parameter, this will now redirected to any routes instead it returns a `validationError` index with all the errors that the validator collects. This option is best for ajax calls because you can convert `validationError` to json and return it back to the ajax and you can now do what ever you want to do with the data.
 
+example validation error:
+![alt text](public/storage/images/validation_error.png)
+
 ```php
 use App\Core\Auth;
 use App\Core\Request;

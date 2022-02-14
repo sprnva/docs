@@ -18,6 +18,7 @@ Sprnva is an open-source framework and repository is available at [github/sprnva
 ### Download Sprnva zip no composer required
 click here to download: [sprnva-no-composer.zip](https://github.com/sprnva/sprnva-no-composer/archive/refs/heads/main.zip)
 
+- duplicate `config.example` and rename it to `config.php`
 - setup `config.php` credentials
 - set `'base_url' => 'example-app'` *('example-app' is the directory name of your application)*
 - Create a database identical to your config then go to  `/migration`module with this URL:

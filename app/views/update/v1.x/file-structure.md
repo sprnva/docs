@@ -21,6 +21,33 @@
 ### Introduction
 Sprnva file structure is tailored to be a MVC framework so that if you step into the massive frameworks like Laravel or CodeIgniter you are familiar with the structure.
 
+```sh
+SPRNVA/
+├── app/
+│   ├── controller/
+│   ├── views/
+├── config/
+│   ├── routes/
+│   ├── function.helpers.php
+├── database/
+│   ├── migrations/
+│   ├── schema/
+├── public/
+│   ├── assets/
+│   ├── storage/
+│   ├── favicon.ico
+├── vendor/
+├── .gitignore
+├── .htaccess
+├── compose.json
+├── composer.lock
+├── config.example
+├── config.php
+├── index.php
+├── LICENSE
+├── README.md
+```
+
 <a name="app" style="padding-top: 30px;">&nbsp;</a>
 ### The `App` Directory
 The majority of your application is housed in the `app` directory. By default, all the logics and the user interface is stored in this directory.

@@ -356,14 +356,15 @@ use App\Core\Auth;
 								</p>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a href="<?= route('/upgrade-guide') ?>" class="nav-link">
+						<!-- <li class="nav-item">
+							<a href="<? //= route('/upgrade-guide') 
+										?>" class="nav-link">
 								<i class="nav-icon fas fa-cog"></i>
 								<p>
 									Upgrade Guide
 								</p>
 							</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a href="<?= route('/installation') ?>" class="nav-link">
 								<i class="nav-icon fas fa-microchip"></i>
