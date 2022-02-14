@@ -235,6 +235,10 @@ use App\Core\Auth;
 		.scroll-to-top-text {
 			color: #484545;
 		}
+
+		img {
+			border-radius: 7px;
+		}
 	</style>
 
 	<!-- jQuery -->
