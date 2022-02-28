@@ -3,6 +3,20 @@
 Sprnva and its other first-party packages follow Semantic Versioning. No particular date when releasing Major updates to the framework, while minor and patch releases may be released as often as every week. Minor and patch releases should never contain breaking changes.
 - - -
 
+## v1.4.0
+
+#### Minor updates
+- - -
+- [ADDED] storage class to handle file uploads
+- [CHANGED] `Request::storeAs() -> Storage::storeAs()`
+- [CHANGED] `Request::hasFile() -> Storage::hasFile()`
+- [FIXED] paginate links issue
+- [ADDED] user avatar
+- [FIXED] issue in chmod migration and filesystem class
+- [ADDED] avatar upload as example in user profile
+- [ADDED] avatar in users migration file
+- [FIXED] query builder `with() method` and `withCount()`
+
 ## v1.3.39
 
 - **[FIX]** in prod mode abort page will be fired
