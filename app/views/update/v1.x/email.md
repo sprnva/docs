@@ -30,5 +30,5 @@ Where **$subject** is string, **$body** is text or html, **$recipients** string 
 
 The `sendMail()` helper return an array with 2 values.
 ```php
-["message" => "Message has been sent", "status" => "success"]
+["message" => "Message has been sent"]
 ```

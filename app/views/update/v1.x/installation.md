@@ -1,9 +1,10 @@
 # Installation
 
-- [Requirements](#requirements)
-- [Install Sprnva via zip download](#install-sprnva-zip)
-- [Install Sprnva Using Composer](#install-sprnva)
-- [The Config](#config)
+- [Installation](#installation)
+  - [Requirements](#requirements)
+    - [Download Sprnva zip no composer required](#download-sprnva-zip-no-composer-required)
+  - [Install Sprnva Using Composer](#install-sprnva-using-composer)
+  - [The Config](#the-config)
 
 ---
 Sprnva is an open-source framework and repository is available at [github/sprnva](https://github.com/sprnva/sprnva). You can see what we sweat behind the scenes in Sprnva through this repository.
@@ -54,6 +55,9 @@ cd example-app
         composer require sprnva/fortify
 
         php vendor/sprnva/fortify/serve
+
+        # or you can use the
+        php fortify_serve
     ```
 - finally, you can now build your desired application using sprnva.
 

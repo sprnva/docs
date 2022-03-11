@@ -1,12 +1,12 @@
 # Validations
 
-- [Introduction](#intro)
-- [Validation Types](#validation-type)
-    - [unique:table](#unique-db)
-    - [unique:table,column,except,id](#unique-custom)
-        - [Specifying A Custom Column Name](#custom-column)
-        - [No column option specified](#no-column)
-- [validation example](#example)
+- [Validations](#validations)
+    - [Introduction](#introduction)
+    - [Validation Types](#validation-types)
+    - [unique:table](#uniquetable)
+    - [unique:table,column,except,id](#uniquetablecolumnexceptid)
+      - [Specifying A Custom Column Name:](#specifying-a-custom-column-name)
+      - [No column option specified:](#no-column-option-specified)
 
 ---
 
@@ -26,7 +26,7 @@ Request::validate($route, $input_to_validate = []);
 Let's look some example of request validations
 
 In views:
-```html
+```
 <form method="POST" action="<?= route("/register") ?>">
     <?= csrf() ?>
     <div class="form-group">

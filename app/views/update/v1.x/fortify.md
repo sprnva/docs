@@ -19,4 +19,7 @@ If you choose to manually create an authentication instead of using Fortify, you
 To get started, install Fortify using the Composer package manager:
 ```bash
 composer require sprnva/fortify
+
+# to add the files we serve
+php fortify_serve
 ```

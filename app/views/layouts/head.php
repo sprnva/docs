@@ -17,6 +17,8 @@ use App\Core\Auth;
 
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,800,800i,900,900i">
+
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet" href="<?= public_url('/assets/adminlte/plugins/fontawesome-free/css/all.min.css') ?>">
 	<!-- Theme style -->
@@ -47,27 +49,20 @@ use App\Core\Auth;
 		}
 
 		pre {
+			font-family: 'Fira Code', monospace;
 			margin-top: 5px;
 			padding: 0px;
-			border-radius: 6px;
-			box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
-			background: rgba(37, 42, 55, var(--tw-bg-opacity)) !important;
+			background: none;
 		}
 
 		code {
+			font-family: 'Fira Code', monospace;
 			color: #0c8819;
-			border-radius: 6px;
-			background-color: #6e768154;
-			padding: 2px 4px;
 		}
 
 		.content-wrapper {
 			color: #484545 !important;
 			background-color: #FFF !important;
-		}
-
-		.hljs {
-			background: #fbfbfd !important;
 		}
 
 		a {
@@ -101,6 +96,10 @@ use App\Core\Auth;
 			color: #fff;
 		}
 
+		.nav-link {
+			padding: 6px !important;
+		}
+
 		.dark-mode .navbar-nav .nav-link:hover {
 			color: rgba(181, 179, 179, 0.7);
 		}
@@ -126,16 +125,20 @@ use App\Core\Auth;
 			border-bottom: 1px solid #28292f;
 		}
 
-		.dark-mode .hljs {
-			background: #2d323e6b !important;
+		.hljs {
+			font-family: 'Fira Code', monospace;
+			background: #1f2937 !important;
 			/*color: #3c3c3c;*/
-			color: #a6a3a3;
+			color: #fff !important;
+			text-shadow: none !important;
+			font-size: 1.1em !important;
 		}
 
-		.dark-mode .hljs-section,
-		.dark-mode .hljs-title {
-			color: #ca473f;
-			font-weight: 400;
+		pre code.hljs {
+			border-radius: 6px;
+			font-family: 'Fira Code', monospace;
+			background: #1f2937 !important;
+			border: 0px;
 		}
 
 		.dark-mode .scroll-to-top-dash {
@@ -146,52 +149,103 @@ use App\Core\Auth;
 			color: #fff;
 		}
 
+		.hljs-comment,
+		.hljs-quote {
+			font-weight: 500;
+			color: rgb(156 163 175);
+		}
+
+		.hljs-attr,
 		.hljs-deletion,
-		.hljs-number,
-		.hljs-quote,
-		.hljs-selector-class,
+		.hljs-function.hljs-keyword,
+		.hljs-literal,
+		.hljs-section,
+		.hljs-selector-tag {
+			font-weight: 500;
+			color: rgb(139 92 246);
+		}
+
+		.hljs-bullet,
+		.hljs-link,
+		.hljs-meta,
+		.hljs-operator,
 		.hljs-selector-id,
-		.hljs-string,
+		.hljs-symbol,
+		.hljs-title,
+		.hljs-variable {
+			font-weight: 500;
+			color: rgb(129 140 248);
+		}
+
+		.hljs-addition,
+		.hljs-attribute,
+		.hljs-meta-string,
+		.hljs-regexp,
+		.hljs-string {
+			font-weight: 500;
+			color: rgb(96 165 250);
+		}
+
+		.hljs-doctag,
+		.hljs-formula,
+		.hljs-keyword,
+		.hljs-name {
+			font-weight: 500;
+			color: rgb(248 113 113);
+		}
+
+		.hljs-built_in,
+		.hljs-class .hljs-title,
 		.hljs-template-tag,
+		.hljs-template-variable {
+			font-weight: 500;
+			color: rgb(249 115 22);
+		}
+
+		.hljs-number,
+		.hljs-selector-attr,
+		.hljs-selector-class,
+		.hljs-selector-pseudo,
+		.hljs-string.hljs-subst,
 		.hljs-type {
-			color: #0c8819 !important;
+			font-weight: 500;
+			color: rgb(52 211 153);
 		}
 
 		.hljs-tag .hljs-attr,
 		.hljs-tag .hljs-name {
-			color: #929292;
+			font-weight: 500;
+			color: rgb(248 113 113);
 		}
 
 		.hljs-punctuation,
 		.hljs-tag {
-			color: #888;
+			color: #fff;
 		}
 
-		.hljs-attribute,
-		.hljs-doctag,
-		.hljs-keyword,
-		.hljs-meta .hljs-keyword,
-		.hljs-name,
-		.hljs-selector-tag {
-			font-weight: inherit;
-			color: #1f7199;
-		}
-
+		.hljs-attr,
+		.hljs-deletion,
+		.hljs-function.hljs-keyword,
+		.hljs-literal,
 		.hljs-section,
-		.hljs-title {
-			color: #ca473f;
-			font-weight: 400;
+		.hljs-selector-tag {
+			font-weight: 500;
+			color: rgb(139 92 246);
 		}
 
-		.hljs-link,
-		.hljs-operator,
-		.hljs-regexp,
-		.hljs-selector-attr,
-		.hljs-selector-pseudo,
-		.hljs-symbol,
-		.hljs-template-variable,
-		.hljs-variable {
-			color: #3f97b9;
+		.table td,
+		.table th {
+			padding: 0.45rem;
+		}
+
+		.table th {
+			background-color: #eaecf0;
+		}
+
+		.table tr,
+		.table th,
+		.table td {
+			border: 1px solid #a2a9b1;
 		}
 
 		hr {
@@ -238,6 +292,11 @@ use App\Core\Auth;
 
 		img {
 			border-radius: 7px;
+		}
+
+		.nav-sidebar>.nav-item .nav-icon {
+			font-size: 14px !important;
+			margin-right: 0px;
 		}
 	</style>
 
@@ -342,7 +401,7 @@ use App\Core\Auth;
 				</div>
 
 				<!-- Sidebar Menu -->
-				<nav class="mt-2 pb-3">
+				<nav class="mt-2 pb-3" style="font-size: 14px;">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 						<li class="nav-item">
 							<a href="<?= route('/whats-new') ?>" class="nav-link">

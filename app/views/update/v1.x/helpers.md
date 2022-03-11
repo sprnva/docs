@@ -1,16 +1,26 @@
 # Function Helpers
 
-- [Introduction](#intro)
-- [Public directory](#public-directory)
-- [Generate random characters](#random-char)
-- [Redirect](#redirect)
-- [with_msg](#with-msg)
-- [alert_msg](#alert-msg)
-- [Dump and Die](#dd)
-- [DB()](#db)
-- [abort](#abort)
-- [bcrypt](#bcrypt)
-- [checkHash](#checkHash)
+- [Function Helpers](#function-helpers)
+    - [Introduction](#introduction)
+    - [Public directory](#public-directory)
+    - [Generate random characters](#generate-random-characters)
+    - [Redirect](#redirect)
+    - [with_msg](#with_msg)
+    - [alert_msg](#alert_msg)
+    - [Dump and Die](#dump-and-die)
+    - [DB()](#db)
+    - [abort](#abort)
+    - [bcrypt](#bcrypt)
+    - [checkHash](#checkhash)
+    - [error_page_code](#error_page_code)
+    - [gate_denies](#gate_denies)
+    - [sanitizeString](#sanitizestring)
+    - [route](#route)
+    - [view](#view)
+    - [appversion](#appversion)
+    - [csrf](#csrf)
+    - [basepath](#basepath)
+    - [vendorpath](#vendorpath)
 
 ---
 
@@ -42,7 +52,6 @@ public_url('/favicon.ico');
 Sprnva has a helper function that can generate random characters good for `(ex: product_code, project_code etc.)`. Accepts a parameter `$length` which means how many characters you wanted to print.
 ```php
 <?php
-
 randChar($length = 6);
 ```
 
@@ -52,7 +61,6 @@ Redirect use to redirect to another page with a message.
 ```php
 <?php
 // redirect($route, $message = []);
-
 redirect('/register', ["message" => "Success register", "status" => "success"]);
 ```
 
@@ -62,7 +70,6 @@ Register an alert message
 ```php
 <?php
 // with_msg(["message" => "", "status" => ""]));
-
 with_msg(["message" => "Success register", "status" => "success"]));
 ```
 
@@ -78,7 +85,6 @@ Display the message as alert with color
 Sometime we need to dump something to know the value of that particular `$variable` so `dd()` helper comes to help.
 ```php
 <?php
-
 dd($_SERVER);
 ```
 
@@ -87,7 +93,6 @@ dd($_SERVER);
 For simplicity and more readable code we added a helper function to get the instance of our database connection.
 ```php
 // DB()
-
 $customerData = DB()->selectLoop('*', 'customers', "id > 0");
 ```
 
@@ -97,7 +102,6 @@ redirect to an error page then die(). This will show the error page base on the 
 ```php
 <?php
 // abort($code, $customMessage = '');
-
 abort(404);
 abort(500, 'Internal Error');
 ```
@@ -107,7 +111,6 @@ abort(500, 'Internal Error');
 This will hash the given value and return a hash string
 ```php
 // bcrypt($value);
-
 bcrypt('adminpassword');
 ```
 
@@ -116,6 +119,136 @@ bcrypt('adminpassword');
 Check the given plain value against a hash and return a bool
 ```php
 // checkHash($value, $hashedValue);
-
 checkHash('adminpassword', '$2y$10$Y4gA0DYX3djhWmMsUrHxL.sF.KVqz5xF37oh.GRVUVjoU9yS03Mia');
+```
+
+<a name="error_page_code" style="padding-top: 30px;">&nbsp;</a>
+### error_page_code
+List of all error codes.
+```php
+$codes = [
+    100 => 'Continue',
+    101 => 'Switching Protocols',
+    102 => 'Processing',
+    103 => 'Early Hints',
+    200 => 'OK',
+    201 => 'Created',
+    202 => 'Accepted',
+    203 => 'Non-Authoritative Information',
+    204 => 'No Content',
+    205 => 'Reset Content',
+    206 => 'Partial Content',
+    207 => 'Multi-Status',
+    208 => 'Already Reported',
+    226 => 'IM Used',
+    300 => 'Multiple Choices',
+    301 => 'Moved Permanently',
+    302 => 'Found',
+    303 => 'See Other',
+    304 => 'Not Modified',
+    305 => 'Use Proxy',
+    306 => 'Switch Proxy',
+    307 => 'Temporary Redirect',
+    308 => 'Permanent Redirect',
+    400 => 'Bad Request',
+    401 => 'Unauthorized',
+    402 => 'Payment Required',
+    403 => 'Forbidden',
+    404 => 'Not Found',
+    405 => 'Method Not Allowed',
+    406 => 'Not Acceptable',
+    407 => 'Proxy Authentication Required',
+    408 => 'Request Timeout',
+    409 => 'Conflict',
+    410 => 'Gone',
+    411 => 'Length Required',
+    412 => 'Precondition Failed',
+    413 => 'Request Entity Too Large',
+    414 => 'Request-URI Too Long',
+    415 => 'Unsupported Media Type',
+    416 => 'Requested Range Not Satisfiable',
+    417 => 'Expectation Failed',
+    418 => "I'm a teapot",
+    421 => 'Misdirected Request',
+    422 => 'Unprocessable Entity',
+    423 => 'Locked',
+    424 => 'Failed Dependency',
+    425 => 'Too Early',
+    426 => 'Upgrade Required',
+    428 => 'Precondition Required',
+    429 => 'Too Many Requests',
+    431 => 'Request Header Fields Too Large',
+    451 => 'Unavailable For Legal Reasons',
+    499 => 'Client Closed Request',
+    500 => 'Internal Server Error',
+    501 => 'Not Implemented',
+    502 => 'Bad Gateway',
+    503 => 'Service Unavailable',
+    504 => 'Gateway Timeout',
+    505 => 'HTTP Version Not Supported',
+    506 => 'Variant Also Negotiates',
+    507 => 'Insufficient Storage',
+    508 => 'Loop Detected',
+    510 => 'Not Extended',
+    511 => 'Network Authentication Required',
+    599 => 'Network Connect Timeout Error',
+];
+```
+
+<a name="gate_denies" style="padding-top: 30px;">&nbsp;</a>
+### gate_denies
+check if user role has permission
+```php
+// return boolean true and false
+gate_denies($access = '', $message = '')
+```
+
+<a name="sanitizeString" style="padding-top: 30px;">&nbsp;</a>
+### sanitizeString
+Sanitize strings trim, stripslashes, htmlspecialchars
+```php
+sanitizeString($data, $stripslashes = true, $trim = true)
+```
+
+<a name="route" style="padding-top: 30px;">&nbsp;</a>
+### route
+Set a route to redirect
+```php
+route($route, $data = "")
+```
+
+<a name="view" style="padding-top: 30px;">&nbsp;</a>
+### view
+Require a view.php page
+```php
+// you can use compact() method on the second parameter
+view($name, $data = [])
+```
+
+<a name="appversion" style="padding-top: 30px;">&nbsp;</a>
+### appversion
+Show the current version of the framework
+```php
+appversion()
+```
+
+<a name="csrf" style="padding-top: 30px;">&nbsp;</a>
+### csrf
+This will add a hidden input with csrf token
+```php
+csrf()
+```
+
+<a name="basepath" style="padding-top: 30px;">&nbsp;</a>
+### basepath
+Get the app root path
+```php
+basepath()
+```
+
+<a name="vendorpath" style="padding-top: 30px;">&nbsp;</a>
+### vendorpath
+Get the app vendor path
+```php
+vendorpath()
 ```
