@@ -6,6 +6,11 @@
 
 * * *
 
+## v1.4.13
+- [SOLVED] error in chaining selectLoop()->paginate()->with()->get()
+- [SOLVED] error in select()->get()
+
+* * *
 ## v1.4.12
 - refactor not found `config.php`
 - refactor selective str in blast
