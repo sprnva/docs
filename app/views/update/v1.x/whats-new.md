@@ -6,6 +6,12 @@
 
 * * *
 
+## v1.4.19
+- [SOLVED] issue in upload single and multiple files 
+- [SOLVED] error in selectLoop chain with get
+- [SOLVED] paginate links not counting all query issue
+
+* * *
 ## v1.4.13
 - [SOLVED] error in chaining selectLoop()->paginate()->with()->get()
 - [SOLVED] error in select()->get()
