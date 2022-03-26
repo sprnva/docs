@@ -16,6 +16,7 @@ Route::get('/installation', ['WelcomeController@installation']);
 Route::get('/upgrade-guide', ['WelcomeController@upgradeGuide']);
 Route::get('/file-structure', ['WelcomeController@fileStructure']);
 Route::get('/databases', ['WelcomeController@databases']);
+Route::get('/querybuilder', ['WelcomeController@querybuilder']);
 Route::get('/authentication', ['WelcomeController@authentication']);
 Route::get('/registration', ['WelcomeController@registration']);
 Route::get('/migration', ['WelcomeController@migration']);

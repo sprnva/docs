@@ -462,6 +462,14 @@ use App\Core\Auth;
 							</a>
 						</li>
 						<li class="nav-item">
+							<a href="<?= route('/querybuilder') ?>" class="nav-link">
+								<i class="nav-icon fa fa-asterisk"></i>
+								<p>
+									Query Builder
+								</p>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a href="<?= route('/migration') ?>" class="nav-link">
 								<i class="nav-icon fas fa-download"></i>
 								<p>

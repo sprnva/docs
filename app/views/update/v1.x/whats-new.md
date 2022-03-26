@@ -6,6 +6,11 @@
 
 * * *
 
+## v1.4.22
+- bump version
+- [ADDED] robust database query builder
+
+* * *
 ## v1.4.19
 - [SOLVED] issue in upload single and multiple files 
 - [SOLVED] error in selectLoop chain with get

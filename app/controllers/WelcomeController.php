@@ -101,6 +101,16 @@ class WelcomeController
         return view('home', compact('pageTitle', 'data'));
     }
 
+    public function querybuilder()
+    {
+        $pageTitle = "Query Builder";
+
+        $mdContent = file_get_contents($this->folder . '/db.md');
+        $data = $this->pd->text($mdContent);
+
+        return view('home', compact('pageTitle', 'data'));
+    }
+
     public function routing()
     {
         $pageTitle = "Routing";

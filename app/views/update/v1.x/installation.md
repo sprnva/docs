@@ -65,7 +65,39 @@ cd example-app
 ## The Config
 In order to protect your sensitive credentials, we ignore `config.php` to be committed in the source control. After installation via composer, fill in your desired credentials and know more of it below.
 
-![alt text](public/storage/images/update-config.png)
+```php
+<?php
+
+$config = [
+
+    // DATABASE
+    'driver'    => 'mysql',
+    'host'      => '127.0.0.1',
+    'database'  => '',
+    'username'  => 'root',
+    'password'  => '',
+
+    // APP CONFIG
+    'base_url' => '',
+    'app_name' => '',
+
+    // for more flexible database migration please indicate 
+    // the path of mysql in your machine including the trailing slashes.
+    'mysql_path' => '',
+
+    // choices: development, production
+    'environment' => 'development',
+
+    // EMAIL
+    'smtp_host'     => '',
+    'smtp_username' => '',
+    'smtp_password' => '',
+    'smtp_auth'     => true,
+    'smtp_auto_tls' => true,
+    'smtp_port'     => 25,
+
+];
+```
 
 **base_url** - it's used to tell the router which is the starting point to read a given url. In local and in hosting it is quite similar:
     - **localhost development**
