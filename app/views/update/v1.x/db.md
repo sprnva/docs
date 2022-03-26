@@ -581,8 +581,13 @@ database()->query('SELECT * FROM test WHERE id=? AND status=?', [10, 1])->fetch(
 database()->query('DELETE FROM test WHERE id=?', [10])->exec();
 
 # Usage 4: You can also do it in a single param
+# Select all records
 database()->query('SELECT * FROM test WHERE id=10 AND status=1')->fetchAll();
+
+# Select one record
 database()->query('SELECT * FROM test WHERE id=10 AND status=1')->fetch();
+
+# Other queries like Update, Insert, Delete etc...
 database()->query('DELETE FROM test WHERE id=10')->exec();
 ```
 
