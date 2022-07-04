@@ -96,10 +96,6 @@ use App\Core\Auth;
 			color: #fff;
 		}
 
-		.nav-link {
-			padding: 6px !important;
-		}
-
 		.dark-mode .navbar-nav .nav-link:hover {
 			color: rgba(181, 179, 179, 0.7);
 		}
@@ -292,11 +288,6 @@ use App\Core\Auth;
 
 		img {
 			border-radius: 7px;
-		}
-
-		.nav-sidebar>.nav-item .nav-icon {
-			font-size: 14px !important;
-			margin-right: 0px;
 		}
 	</style>
 
