@@ -401,7 +401,7 @@ use App\Core\Auth;
 				</div>
 
 				<!-- Sidebar Menu -->
-				<nav class="mt-2 pb-3" style="font-size: 14px;">
+				<nav class="mt-2 pb-3">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 						<li class="nav-item">
 							<a href="<?= route('/whats-new') ?>" class="nav-link">

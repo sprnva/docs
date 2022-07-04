@@ -6,6 +6,10 @@
 
 * * *
 
+## v1.4.23
+- refactor migration with more robust query builder
+
+* * *
 ## v1.4.22
 - bump version
 - [ADDED] robust database query builder
